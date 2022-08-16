@@ -1,0 +1,67 @@
+/*===================================*
+  08.START TESTIMONIAL STYLE
+*===================================*/
+.author_img img {
+  max-width: 100px;
+}
+
+.author_name {
+  overflow: hidden;
+}
+
+.author_name h6 {
+  margin-bottom: 5px;
+}
+
+.author_name span {
+  color: #ff2900;
+}
+
+.testimonial_box.box_shadow1 {
+  margin: 10px;
+}
+
+.testimonial_desc p:last-child {
+  margin-bottom: 0;
+}
+
+.testimonial_style1 .author_img {
+  margin-right: 15px;
+}
+
+.testimonial_style1 .author_img img {
+  max-width: 60px;
+}
+
+.testimonial_style1 .testimonial_desc {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.testimonial_style1 .testimonial_box {
+  position: relative;
+  z-index: 1;
+}
+
+.author_wrap {
+  margin: 0 auto;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.testimonial_style1 .author_wrap {
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.testimonial_wrap {
+  padding: 0 60px;
+}
+
+/*===================================*
+  08.END TESTIMONIAL STYLE
+*===================================*/

@@ -1,0 +1,10 @@
+
+
+
+
+ALTER TABLE `shatkahonbd_web`.`tbl_site_setting` 
+ADD COLUMN `frontend_offer_banner_image` VARCHAR(255) NULL AFTER `login_page_bg`;
+
+
+ALTER TABLE `shatkahonbd_web_new`.`tbl_site_setting` 
+ADD COLUMN `frontend_offer_banner_url` VARCHAR(255) NULL AFTER `frontend_offer_banner_image`;

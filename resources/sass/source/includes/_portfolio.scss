@@ -1,0 +1,96 @@
+
+/*===================================*
+  07.START PORTFOLIO STYLE
+*===================================*/
+.carousel_slider li {
+  list-style: none;
+}
+
+.grid_filter {
+  margin-bottom: 30px;
+}
+
+.grid_filter li {
+  display: inline-block;
+}
+
+.grid_filter li a {
+  padding: 5px 15px;
+  display: block;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.grid_filter li a.current {
+  color: #ff2900;
+}
+
+.grid_filter.filter_style1 li a {
+  padding: 5px 20px;
+}
+
+.grid_filter.filter_style1 li a.current {
+  color: #fff;
+  background-color: #ff2900;
+}
+
+.grid_filter.filter_style2 li a {
+  border-bottom: 1px solid transparent;
+}
+
+.grid_filter.filter_style2 li a.current {
+  border-bottom-color: #ff2900;
+}
+
+.grid_container > li {
+  list-style: none;
+}
+
+.gutter_small {
+  margin: 0 -7.5px 0 -7.5px;
+}
+
+.gutter_small > li {
+  padding: 0 7.5px 0 7.5px;
+}
+
+.gutter_medium {
+  margin: 0 -15px 0 -15px;
+}
+
+.gutter_medium > li {
+  padding: 0 15px 0 15px;
+}
+
+.gutter_medium > li .portfolio_item,
+.gutter_medium > li .image_gallery_item {
+  margin-bottom: 30px;
+}
+
+.gutter_small > li .portfolio_item,
+.gutter_small > li .image_gallery_item {
+  margin-bottom: 15px;
+}
+
+.grid_col2 > li {
+  width: 50%;
+  float: left;
+}
+
+.grid_col3 > li {
+  width: 33.33%;
+  float: left;
+}
+
+.grid_col4 > li {
+  width: 25%;
+  float: left;
+}
+
+.loadmore > li {
+  transition: all 0.5s ease-in-out;
+}
+
+/*===================================*
+  07.END PORTFOLIO STYLE
+*===================================*/

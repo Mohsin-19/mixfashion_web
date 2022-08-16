@@ -1,0 +1,135 @@
+
+/*===================================*
+  04.START SHOP BANNER STYLE
+*===================================*/
+.single_banner {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.single_banner_info {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  padding: 20px;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 50%;
+}
+
+.single_bn_title {
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.single_bn_link {
+  position: relative;
+}
+
+.single_bn_link::before {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  height: 7px;
+  background-color: rgba(255, 50, 77, 0.2);
+  width: 100%;
+  z-index: -1;
+}
+
+.single_banner:hover img {
+  -moz-transform: scale(1.06);
+  -webkit-transform: scale(1.06);
+  transform: scale(1.06);
+}
+
+.single_banner img {
+  transition: all 0.3s ease-in-out;
+  width: 100%;
+}
+
+.sale_banner {
+  padding: 0 10px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.sale_banner img {
+  width: 100%;
+}
+
+.hover_effect1 {
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+
+.hover_effect1::before,
+.hover_effect1::after {
+  background-color: rgba(255, 255, 255, 0.6);
+  content: "";
+  height: 100%;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  transition: all 0.9s ease 0s;
+  width: 100%;
+  z-index: 1;
+}
+
+.hover_effect1::before {
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  -moz-transform: translate(105%, 0%);
+  -webkit-transform: translate(105%, 0%);
+  transform: translate(105%, 0%);
+}
+
+.hover_effect1::after {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  -moz-transform: translate(-105%, 0%);
+  -webkit-transform: translate(-105%, 0%);
+  transform: translate(-105%, 0%);
+}
+
+.hover_effect1:hover:before,
+.hover_effect1:hover:after {
+  opacity: 0;
+  -moz-transform: translate(0px, 0px);
+  -webkit-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+.fb_info {
+  position: absolute;
+  top: 15px;
+  padding: 15px;
+  left: 15px;
+  z-index: 9;
+}
+
+.fb_info2 {
+  position: absolute;
+  top: 50%;
+  padding: 15px;
+  left: 35px;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 9;
+  width: 40%;
+}
+
+.furniture_banner .single_bn_title1 {
+  font-size: 80px;
+  margin-bottom: 15px;
+}
+
+.sale-banner img {
+  width: 100%;
+}
+
+/*===================================*
+  04.END SHOP BANNER STYLE
+*===================================*/

@@ -1,0 +1,196 @@
+
+
+[class*=sidebar-dark-]{
+    background-color: #000;
+}
+
+
+.padUpDn{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+body{
+    background: #f1f1f1 none repeat scroll 0 0;
+}
+
+
+.heading_s4 h1{
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.product_search_form{
+ 
+position: relative;
+max-width: 75%;
+width: 75%;
+} 
+
+
+.banner_section.shop_el_slider, .banner_section.shop_el_slider .banner_content_wrap, .banner_section.shop_el_slider .banner_content_wrap .carousel-item, .banner_section.shop_el_slider .carousel-item, .banner_section.slide_medium, .banner_section.slide_medium .banner_content_wrap, .banner_section.slide_medium .banner_content_wrap .carousel-item, .banner_section.slide_medium .carousel-item {
+    height: 630px;
+}
+
+.product_search_form .form-control{
+    height: 45px;
+}
+.product_search_form .search_btn2 {
+    width: 60px;
+}
+
+.hotline .contact_detail span{
+    font-size: 16px;
+    font-weight: 700;
+    color: red;
+}
+
+.header_list span{
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+}
+
+.bottom_header .navbar-nav a{
+    color: #fff;
+}
+
+.footer_top .widget_links a:hover{
+    color:#cb150f;
+}
+
+
+.bg_gray{
+    background-color: #cb150f!important;
+}
+.bg_gray .page-title h1{
+    color: #fff!important;
+}
+.bg_gray .breadcrumb-item{
+    color: #fff!important;
+}
+.bg_gray .breadcrumb-item a{
+    color: #fff!important;
+}
+
+.breadcrumb_section.page-title-mini{
+    margin-bottom: 20px;
+}
+
+.product_img_box{
+    background: #fff;
+}
+
+.tab-style2 .nav-tabs{
+    background-color: #e3ac09;
+}
+
+.tab-style2 .nav-item a{
+    color:#fff;
+}
+
+
+.plus-minus-group .btn{
+    background-color: #28a745;
+}
+.plus-minus-group .btn i{
+    color: #fff;
+}
+
+.plus-minus-group .btn:hover{
+    background-color: #1e8736;
+}
+
+.heading_s2 h1{
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.card-title{
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.banner-pad{
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+
+/* Responsive CSS */
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .banner-pad{
+        padding-top: 65px;
+        padding-bottom: 65px;
+    }
+
+    .banner_section.shop_el_slider, .banner_section.shop_el_slider .banner_content_wrap, .banner_section.shop_el_slider .banner_content_wrap .carousel-item, .banner_section.shop_el_slider .carousel-item, .banner_section.slide_medium, .banner_section.slide_medium .banner_content_wrap, .banner_section.slide_medium .banner_content_wrap .carousel-item, .banner_section.slide_medium .carousel-item {
+        height: 200px!important;
+    }
+
+    .header_wrap .navbar-brand{
+        left: 15%;
+        top:  15%;
+    }
+
+    .slideheight{
+        height: 25vh!important;
+    }
+
+    .widget, .widget_title {
+        color: red;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+}
+
+
+
+/* Responsive End Here CSS */
+
+
+.offerbanner-btn{
+    position:absolute;
+    bottom: 5%;
+}
+
+
+.product_sort_info li i {
+    top: -2px;
+    color: green;
+}
+
+.plus-minus-group {
+    width: 175px;
+}
+
+.dropdown-toggle:after, .dropdown-toggler:after {
+    border: 0;
+    content: "\e830";
+    font-family: fontello,serif;
+    font-weight: 900;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.slideheight{
+    height: 60vh;
+}
+
+
+.contact_detail i {
+    font-size: 36px !important;
+    margin-right: 0px;
+    margin-left: 23px;
+}
+
+<<<<<<< HEAD
+/* contact btn add on header */
+=======
+>>>>>>> mohsin

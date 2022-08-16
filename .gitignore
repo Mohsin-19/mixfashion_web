@@ -1,0 +1,26 @@
+application/config/config.php
+application/config/database.php
+node_modules
+/images
+/slide images
+/slide-images
+application/user_access/
+assets/uploads/categories/
+assets/uploads/
+
+_subdomain
+assets/images
+
+/cgi-bin
+/beta
+/beta
+/new
+
+.idea/
+.htaccess
+
+beta.zip
+grocery.zip
+images.zip
+img-collection.zip
+node_modules

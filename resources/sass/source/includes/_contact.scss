@@ -1,0 +1,175 @@
+
+
+/*===================================*
+  16.START CONTACT STYLE
+*===================================*/
+.contact_wrap li {
+  list-style: none;
+}
+
+.contact_wrap li {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  margin-bottom: 25px;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.contact_icon {
+  margin-right: 20px;
+}
+
+.contact_icon i {
+  font-size: 34px;
+  color: #ff2900;
+}
+
+.contact_text span {
+  color: #333;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.contact_text p:last-child {
+  margin-bottom: 0;
+}
+
+.contact_text a {
+  color: #687188;
+  line-height: 28px;
+}
+
+.contact_text a:hover {
+  color: #ff2900;
+}
+
+.contact_style1 {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #eee;
+  margin-bottom: 30px;
+}
+
+.contact_style1 .contact_text span {
+  margin-bottom: 5px;
+}
+
+.contact_style1 .contact_icon {
+  margin-right: 0;
+  margin-bottom: 10px;
+}
+
+.contact_style2 {
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+
+.contact_style2 .contact_icon {
+  background-color: #DFFFED;
+  margin: 0 0 5px;
+  height: 90px;
+  width: 90px;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.contact_style2 .contact_icon i {
+  line-height: 90px;
+}
+
+.contact_style3 {
+  text-align: center;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 40px 20px;
+  border-radius: 10px;
+}
+
+.contact_style3 .contact_icon {
+  border: 1px solid #ff2900;
+  margin: 0 0 5px;
+  height: 80px;
+  width: 80px;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.contact_style3 .contact_icon i {
+  line-height: 78px;
+  transition: all 0.5s ease-in-out;
+}
+
+.contact_style3 .contact_icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #ff2900;
+  transition: all 0.5s ease-in-out;
+  -moz-transform: scale(0);
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  border-radius: 100%;
+  z-index: -1;
+}
+
+.contact_style3:hover .contact_icon::before {
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+
+.contact_style3:hover .contact_icon i {
+  color: #fff;
+}
+
+.contact_box {
+  position: relative;
+  padding: 50px 0;
+  display: table;
+  width: 100%;
+}
+
+.contact_form {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  max-width: 500px;
+  background-color: #fff;
+  padding: 30px;
+  float: right;
+  margin-right: 30px;
+  position: relative;
+  z-index: 9;
+}
+
+.contact_box .map {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.contact_box .map iframe {
+  height: 100%;
+}
+
+/*===================================*
+  16. END CONTACT STYLE
+*===================================*/

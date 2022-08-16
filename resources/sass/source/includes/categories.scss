@@ -1,0 +1,47 @@
+
+
+/*===================================*
+  05.START CATEGORIES STYLE
+*===================================*/
+.categories_box {
+  text-align: center;
+}
+
+.categories_box a {
+  display: block;
+  padding: 10px;
+  background-color: #f7f7f7;
+}
+
+.categories_box i {
+  font-size: 40px;
+  display: block;
+}
+
+.categories_box span {
+  text-transform: capitalize;
+  margin-top: 5px;
+  display: block;
+}
+
+.cat_overlap {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  z-index: 1;
+  margin-top: -70px;
+}
+
+.cat_style1 .categories_box a {
+  background-color: transparent;
+  padding: 0;
+}
+
+.cat_style1 .categories_box span {
+  margin-top: 10px;
+}
+
+/*===================================*
+  05.END CATEGORIES STYLE
+*===================================*/

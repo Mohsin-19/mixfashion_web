@@ -1,0 +1,51 @@
+@media print {
+    .no_print{
+        display: none !important;
+    }
+}
+
+
+h1,h2,h3,h4,p{
+    margin:3px 0px;
+    text-align: center;
+}
+
+.tbl  {
+    border-collapse:collapse;
+    border-spacing:0;
+    width: 100%;
+
+}
+.tbl tr td{
+    padding:5px;
+    font-family:Arial, sans-serif;
+    font-size:15px;
+    border-style:solid;
+    border-width:1px;
+    word-break:break-all;
+}
+.tbl tr th{
+    padding:14px;
+    font-family:Arial, sans-serif;
+    font-size:15px;
+    border-style:solid;
+    border-width:1px;
+    word-break:break-all;
+}
+
+.title{
+    font-weight: bold;
+}
+.box-primary{
+    border-top-color: white !important;
+    margin-top: 5px;
+}
+.txt_p_d{
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+.txt_p_d_1{
+    font-weight: bold;
+    text-align: right;
+}

@@ -1,0 +1,8 @@
+@media print {
+    .set_width_for_print{
+        width: 50% !important;
+    }
+    .no_print{
+        display: none;
+    }
+}

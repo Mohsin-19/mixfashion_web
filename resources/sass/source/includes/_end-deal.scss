@@ -1,0 +1,100 @@
+
+/*===================================*
+  22.START DEAL OF THE DAY STYLE
+*===================================*/
+.deal_timer .countdown_time .countdown_box:first-child,
+.deal_timer .countdown_time .countdown_box .cd_text {
+  display: none;
+}
+
+.deal_timer {
+  position: relative;
+  padding-left: 15px;
+}
+
+.deal_timer::before {
+  content: "\e72b";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  font-family: 'themify', serif;
+  font-size: 20px;
+  color: #ff2900;
+}
+
+.deal_timer .countdown_style1 .countdown_box::before {
+  font-size: 24px;
+  font-weight: normal;
+  right: -10px;
+}
+
+.deal_timer .countdown_box .countdown {
+  font-size: 24px;
+}
+
+.deal_timer .countdown_box {
+  width: auto;
+  padding-right: 0;
+}
+
+.deal_wrap {
+  border: 2px solid #ff2900;
+  border-radius: 20px;
+  overflow: hidden;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.deal_wrap .product_img {
+  max-width: 300px;
+  width: 100%;
+}
+
+.deal_content {
+  width: 100%;
+  padding: 30px 30px 30px 0;
+}
+
+.deal_content .product_info {
+  padding: 0;
+}
+
+.deal_wrap .countdown_style1 .countdown_box::before {
+  font-size: 24px;
+  font-weight: normal;
+  right: -10px;
+}
+
+.deal_wrap .countdown_box .countdown {
+  font-size: 24px;
+}
+
+.deal_wrap .countdown_time .cd_text {
+  font-size: 13px;
+}
+
+.deal_progress {
+  padding-top: 5px;
+  display: block;
+}
+
+.stock-available {
+  float: right;
+}
+
+.deal_progress .progress {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.deal_progress .progress-bar {
+  background-color: #ff2900;
+  text-indent: -99999px;
+}
+
+/*===================================*
+  22.END DEAL OF THE DAY STYLE
+*===================================*/

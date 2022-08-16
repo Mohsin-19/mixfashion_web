@@ -1,0 +1,89 @@
+.company_info {
+  min-height: 41px;
+  color: white !important;
+  text-align: center;
+  font-weight: bold;
+}
+
+.breadcrumb {
+  padding: 0px 5px !important;
+}
+
+.btn-primary {
+  background-color: #3c8dbc;
+}
+
+.form_question {
+  font-size: 24px;
+  color: #3c8dbc;
+  padding-top: 7px;
+}
+
+.main-footer {
+  padding: 10px !important;
+}
+
+.main-footer p {
+  padding-top: 10px;
+}
+
+.left-sdide {
+  float: left !important;
+}
+
+.navbar-nav>.user-menu>.dropdown-menu dropdown-menu-right {
+  width: 50px;
+}
+
+.dropdown-menu {
+  border: 1px solid #ddd !important;
+}
+
+.loader {
+  display: none;
+}
+
+@media only screen and (max-device-width: 767px) {
+  .width_notification {
+    width: 94% !important;
+  }
+}
+
+#myModal .modal-title {
+  text-align: left;
+}
+
+#register_details_body p {
+  text-align: left;
+  margin: 0px 0px 10px 0px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: inner-spin-button !important;
+}
+
+.sweet-alert fieldset {
+  display: none;
+}
+
+.txt-a-1 {
+  font-size: 20px;
+}
+
+.txt-a-2 {
+  width: 23px;
+  margin-right: -3px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.float-right {
+  float: right !important;
+}
+
+.float-left {
+  float: left !important;
+}

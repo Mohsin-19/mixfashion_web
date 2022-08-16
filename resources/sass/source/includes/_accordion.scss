@@ -1,0 +1,152 @@
+/*===================================*
+  18.START ACCORDION STYLE
+*===================================*/
+.accordion .card .card-header {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion .card-header a {
+    padding: 15px 40px 15px 15px;
+    display: block;
+    line-height: normal;
+}
+
+.accordion .card-body p:last-child {
+    margin: 0;
+}
+
+.card-body p {
+    margin-bottom: 15px;
+}
+
+.accordion_style1.accordion .card {
+    background-color: transparent;
+    margin-bottom: 15px;
+    border-radius: 0;
+    border: 0;
+}
+
+.accordion_style1.accordion .card:last-child {
+    margin-bottom: 0;
+}
+
+.accordion_style1 .card-body {
+    padding: 15px 0 10px 0;
+}
+
+.accordion.accordion_style1 .card-header a {
+    padding-left: 0;
+    padding-top: 0;
+    font-weight: 600;
+}
+
+.accordion_style1 .card-header a::after {
+    content: "\f068";
+    font-family: "Font Awesome 5 Free", serif;
+    font-weight: 900;
+    font-size: 16px;
+    position: absolute;
+    right: 15px;
+    top: 0;
+}
+
+.accordion_style1 .card-header a[aria-expanded="false"]::after {
+    content: "\f067";
+}
+
+.accordion_style2 .card-header {
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+}
+
+.accordion_style2 .card-header a {
+    padding: 15px 40px 15px 15px;
+    display: block;
+    font-weight: 600;
+}
+
+.accordion_style2 .card-body {
+    padding: 0 15px 15px 15px;
+}
+
+.accordion_style2 .card-header a::after {
+    content: "\f126";
+    font-family: "Ionicons", serif;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.accordion_style2 .card-header a.collapsed:after {
+    content: "\f123";
+}
+
+.accordion_style3.accordion .card {
+    background-color: transparent;
+    margin-bottom: 15px;
+    border-radius: 0;
+}
+
+.accordion.accordion_style3 .card-header {
+    border: 0;
+}
+
+.accordion.accordion_style3 .card-header a {
+    font-weight: 600;
+}
+
+.accordion.accordion_style3.accordion>.card {
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.accordion.accordion_style3.accordion .card-body {
+    border-top: 1px solid rgba(0, 0, 0, .125);
+}
+
+.accordion_style3 .card-header a::after {
+    content: "\f208";
+    font-family: "Ionicons", serif;
+    font-size: 16px;
+    font-weight: normal;
+    position: absolute;
+    right: 15px;
+    top: 16px;
+}
+
+.accordion_style3 .card-header a[aria-expanded="false"]::after {
+    content: "\f217";
+}
+
+.accordion_style4 .card-header a {
+    padding: 20px 20px 20px 50px;
+    font-weight: 600;
+    display: inline-block;
+    width: 100%;
+}
+
+.accordion_style4 .card-header a::after {
+    content: "\f126";
+    font-family: "Ionicons", serif;
+    font-size: 14px;
+    font-weight: normal;
+    position: absolute;
+    left: 20px;
+    top: 25px;
+}
+
+.accordion_style4 .card-header a.collapsed::after {
+    content: "\f123";
+}
+
+.accordion_style4>.card .card-header {
+    margin-bottom: -1px;
+}
+
+/*===================================*
+  18.END ACCORDION STYLE
+*===================================*/

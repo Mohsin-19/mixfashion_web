@@ -1,0 +1,108 @@
+
+/*===================================*
+  15.START BREADCRUMB STYLE
+*===================================*/
+.breadcrumb_section {
+  padding: 150px 0;
+  width: 100%;
+}
+
+.breadcrumb_section.page-title-mini {
+  padding: 30px 0;
+}
+
+.page-title-mini .page-title h1 {
+  font-size: 28px;
+}
+
+.page-title-mini .breadcrumb li {
+  font-size: 14px;
+}
+
+.header_wrap.transparent_header + .breadcrumb_section {
+  padding-top: 200px;
+}
+
+.header_wrap.transparent_header.header_with_topbar + .breadcrumb_section {
+  padding-top: 250px;
+}
+
+.page-title h1 {
+  margin: 0;
+  text-transform: capitalize;
+  font-weight: bold;
+  line-height: normal;
+}
+
+.page_title_light *,
+.page_title_light .breadcrumb-item,
+.page_title_light .breadcrumb-item::before {
+  color: #fff;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "\e832";
+  font-family: "fontello", serif;
+  vertical-align: middle;
+  font-weight: 900;
+}
+
+.page-title + .breadcrumb {
+  margin-top: 15px;
+}
+
+.page-title + span {
+  margin-top: 15px;
+  display: inline-block;
+  width: 100%;
+}
+
+.page_title_video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.page_title_video video {
+  object-fit: cover;
+  width: 100%;
+}
+
+.breadcrumb-item a i {
+  font-size: 26px;
+  line-height: 1;
+  vertical-align: middle;
+  margin-right: 5px;
+  margin-top: -5px;
+  display: inline-block;
+}
+
+.page-title-video {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: -3;
+}
+
+.page-title-video video {
+  object-fit: cover;
+  width: 100%;
+}
+
+/*===================================*
+  15.END BREADCRUMB STYLE
+*===================================*/

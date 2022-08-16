@@ -1,0 +1,129 @@
+@font-face {
+  font-family: bangla_font;
+  src: url('../../../assets/SolaimanLipi.ttf');
+}
+
+.uk-h1,
+.uk-h2,
+.uk-h3,
+.uk-h4,
+.uk-h5,
+.uk-h6,
+.uk-heading-2xlarge,
+.uk-heading-large,
+.uk-heading-medium,
+.uk-heading-small,
+.uk-heading-xlarge,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: bangla_font
+}
+
+.bgColor {
+  font-family: bangla_font
+}
+
+.showSweetAlert {
+  font-family: bangla_font;
+}
+
+.bn_font_custom {
+  font-family: bangla_font;
+  font-size: 20px !important;
+}
+
+.body_font_c {
+  font-family: Rubik;
+}
+
+.sweet-alert p {
+  font-size: 22px !important;
+}
+
+.itemName {
+  font-size: 20px !important;
+  line-height: 1.1 !important;
+}
+
+.catItem p {
+  font-size: 20px !important;
+}
+
+#rightSidebarForAddToCart .content .showCartItem .productCartView li .right-item .cartProductName {
+  font-size: 18px !important;
+}
+
+.innerCartBox p {
+  font-size: 18px !important;
+}
+
+.custom_bn_font_20 {
+  font-size: 20px !important;
+}
+
+.custom_bn_font_19 {
+  font-size: 20px !important;
+}
+
+.txtWhite {
+  font-size: 18px !important;
+}
+
+.c-btn {
+  font-size: 20px !important;
+}
+
+.uk-margin {
+  font-size: 21px !important;
+}
+
+.custom_bn_font_16 {
+  font-size: 16px !important;
+}
+
+.custom_bn_font_18 {
+  font-size: 18px !important;
+}
+
+.custom_bn_font_22 {
+  font-size: 22px !important;
+}
+
+.overlay-quantity p {
+  font-size: 20px !important;
+}
+
+.after-cart-show {
+  font-size: 20px !important;
+}
+
+.copyright-txt {
+  font-size: 20px !important;
+}
+
+.load_more_products {
+  font-size: 18px !important;
+  font-family: bangla_font;
+}
+
+.placeOrderConfirm {
+  font-size: 23px !important;
+  font-family: bangla_font;
+}
+
+.confirm {
+  font-family: bangla_font;
+  font-size: 22px !important;
+}
+
+#mainHomeContent #productPage .productItemContainer .itemWrapper .cartBtnBox .cardBtn {
+  font-size: 18px !important;
+}
+
+.uk-button {
+  font-size: 18px !important;
+}

@@ -1,0 +1,19 @@
+.login-box-body{
+    border-radius: 10px;
+    border: 1px solid lightgreen;
+}
+.txt-1{
+    box-shadow: 0 0 15px lightgreen;
+}
+.txt-2{
+    padding: 5px !important;
+}
+.credit{
+    text-align: center;
+    padding: 5px;
+}
+.txt-3{
+    text-align: center;
+    font-size: 18px;
+    margin-top: 10px
+}

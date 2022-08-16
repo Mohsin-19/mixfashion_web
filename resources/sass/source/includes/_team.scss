@@ -1,0 +1,100 @@
+
+/*===================================*
+  13.START TEAM STYLE
+*===================================*/
+.team_img img {
+  width: 100%;
+}
+
+.team_box {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.team_style1 .team_img {
+  position: relative;
+}
+
+.team_style1 .team_img::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  z-index: 1;
+}
+
+.team_style1:hover .team_img::before {
+  opacity: 1;
+}
+
+.team_style1 .social_icons + .team_title {
+  margin-top: 10px;
+}
+
+.team_style1 .team_content {
+  padding-top: 15px;
+}
+
+.team_title h1,
+.team_title h2,
+.team_title h3,
+.team_title h4,
+.team_title h5,
+.team_title h6 {
+  font-weight: 600;
+}
+
+.team_style1 .team_title span {
+  display: block;
+}
+
+.team_single_img {
+  margin-bottom: 30px;
+}
+
+.team_single_info .team_title h3 {
+  font-weight: 600;
+}
+
+.team_single_content {
+  padding-left: 30px;
+  border-left: 1px solid #eeeeee;
+}
+
+.team_single_info .contact_info {
+  margin: 20px 0;
+}
+
+.team_email {
+  font-size: 20px;
+  display: inline-block;
+}
+
+.team_style1 .social_icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.team_style1:hover .social_icons {
+  top: 50%;
+  opacity: 1;
+}
+
+/*===================================*
+  13.END TEAM STYLE
+*===================================*/

@@ -1,0 +1,178 @@
+/*===================================*
+  10.START NEWLETTER STYLE
+*===================================*/
+.newsletter_small {
+  padding: 70px 0;
+}
+
+.newsletter_form form,
+.newsletter_form2 form {
+  position: relative;
+}
+
+.rounded-input {
+  border-radius: 50px;
+}
+
+.newsletter_form input,
+.newsletter_form input:focus,
+.newsletter_form2 input,
+.newsletter_form2 input:focus {
+  border: 0;
+}
+
+.newsletter_form input.form-control-sm {
+  height: 50px;
+  padding: 10px 140px 10px 20px;
+}
+
+.newsletter_form button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.newsletter_form2 input,
+.newsletter_form2 input:focus {
+  height: 59px;
+  padding: 10px 140px 10px 20px;
+}
+
+.newsletter_form2 button {
+  position: absolute;
+  right: 5px;
+  top: 4px;
+}
+
+.newsletter_box {
+  padding: 70px 50px;
+  background-color: #fff;
+  position: relative;
+}
+
+.newsletter_box::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 0;
+  bottom: 0;
+  top: 10px;
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.1);
+  z-index: 0;
+}
+
+.newsletter_wrap {
+  position: relative;
+  margin: 30px 0;
+}
+
+.newsletter_wrap::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: -15px;
+  top: -15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: -1;
+  background-color: #fff;
+}
+
+.newsletter_wrap::after {
+  content: "";
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  bottom: -30px;
+  top: -30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: -2;
+  background-color: #fff;
+}
+
+.newsletter_form .btn-send {
+  background-color: #ff2900;
+  color: #fff;
+  font-size: 20px;
+  right: 5px;
+  border: 0;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  line-height: 40px;
+}
+
+.newsletter_form .btn-send2 {
+  background-color: transparent;
+  color: #ff2900;
+  font-size: 20px;
+  right: 5px;
+  width: 50px;
+  height: 40px;
+  line-height: 40px;
+  border-left: 1px solid #ddd;
+  border-top: 0;
+  border-bottom: 0;
+  border-right: 0;
+  padding: 0 0 0 5px;
+}
+
+.input_tran_white input,
+.input_tran_white input:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  box-shadow: none;
+}
+
+.input_tran_white input::-webkit-input-placeholder {
+  color: #ffffff;
+  opacity: 1
+}
+
+.input_tran_white input::-moz-placeholder {
+  color: #ffffff;
+  opacity: 1
+}
+
+.input_tran_white input:-ms-input-placeholder {
+  color: #ffffff;
+  opacity: 1
+}
+
+.input_tran_white input::-ms-input-placeholder {
+  color: #ffffff;
+  opacity: 1
+}
+
+.input_tran_white input::placeholder {
+  color: #ffffff;
+  opacity: 1
+}
+
+.newsletter_text {
+  position: relative;
+  padding-left: 80px;
+}
+
+.newsletter_text p:last-child {
+  margin: 0;
+}
+
+.newsletter_text::before {
+  content: "\e999";
+  position: absolute;
+  left: 0;
+  color: #fff;
+  font-family: linearicons, serif;
+  font-size: 65px;
+  line-height: normal;
+  opacity: 0.4;
+}
+
+/*===================================*
+  10.END NEWLETTER STYLE
+*===================================*/

@@ -7,7 +7,7 @@
           <div class="padding_eight_all bg-white">
             <div class="heading_s1 text-center">
               <img src="<?= base_url('assets/images/login-logo.png') ?>" class="login-logo" alt="shatkahonbd">
-              <p class="login_continue">to continue to <span class="text-uppercase">shatkahonbd</span></p>
+              <p class="login_continue">TO CONTINUE TO <span class="text-uppercase">Mix Fashion</span></p>
             </div>
 
             <a href="<?= $facebook_auth_url ?>" class="css-zqtbdk">
@@ -41,7 +41,7 @@
                       <span id="error-msg" class="hide"></span>
                     </div>
                   </div>
-                  <small id="phone" class="error_l_phone error_msg">e.g: 01515234363</small>
+                  <small id="phone" class="error_l_phone error_msg">e.g: 01938235071</small>
                 </div> <!-- form-group -->
 
                 <input type="hidden" name="remember_me" id="remember_me" value="1">
@@ -57,7 +57,7 @@
               <p class="text-center m-2">
                 By proceeding, you agree to <a href="<?= site_url('terms-condition') ?>" target="_blank">Terms of Use</a> and
                 <a href="<?= site_url('privacy-policy') ?>" target="_blank">Privacy Policy</a>
-                of Shatkahon
+                of Mix Fashion
               </p>
 
             </div>

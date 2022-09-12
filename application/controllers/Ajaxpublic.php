@@ -353,7 +353,7 @@ class Ajaxpublic extends Cl_Controller
         $data = array();
         $order = $this->Common_model->getOrderData($id);
         //store notification when happened an order
-        $txt = "Hello Sir/ Madam. Thank you for placing your order at https://shatkahonbd.com Your order " . $order_number . " & order amount BDT " . $order->total_amount . ".";
+        $txt = "Hello Sir/ Madam. Thank you for placing your order at http://mixfashionhouse.com/ Your order " . $order_number . " & order amount BDT " . $order->total_amount . ".";
         $data['notifications_details'] = $txt;
         $data['order_id'] = $id;
         $data['date'] = date("Y-m-d", strtotime('today'));
@@ -597,7 +597,7 @@ class Ajaxpublic extends Cl_Controller
         $this->Common_model->insertInformation($data, "tbl_customers");
       }
       $siteUrl = site_url('/');
-      $txt = "{$otp} is your one time pin (OTP) for shatkahonbd.com validity for OTP is 3 minutes.
+      $txt = "{$otp} is your one time pin (OTP) for mixfashionhouse.com validity for OTP is 3 minutes.
       {$siteUrl}";
       //send sms
       $smsSetting = getSMSSetting();

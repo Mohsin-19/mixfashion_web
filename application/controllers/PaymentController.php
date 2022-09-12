@@ -315,7 +315,7 @@ class PaymentController extends CI_Controller
           $this->Common_model->updateInformation($data, $order_id, "tbl_orders");
           $order_number = $order->order_number;
 
-          $txt = "Hello Sir/ Madam. Thank you for placing your order at https://shatkahonbd.com . Your order " . $order_number . " & order amount BDT " . $order->total_amount . ".";
+          $txt = "Hello Sir/ Madam. Thank you for placing your order at http://mixfashionhouse.com/. Your order " . $order_number . " & order amount BDT " . $order->total_amount . ".";
 
           $data['notifications_details'] = $txt;
           $data['order_id'] = $order_id;

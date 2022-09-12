@@ -24,7 +24,7 @@ $pages = get_pages();
         </div>
         <div class="col-sm">
           <div class="widget">
-            <h6 class="widget_title">About Shatkahonbd</h6>
+            <h6 class="widget_title">About Mix Fashion House</h6>
             <ul class="widget_links pl-0">
               <?php
               foreach ($pages as $value) :

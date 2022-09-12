@@ -28,7 +28,7 @@ if (isset($getSiteSetting->base_color) && $getSiteSetting->base_color) {
   <meta name="Developer" content="Sumon Ahmed">
   <meta name="resource-type" content="document">
   <meta name="contact" content="sumon4skf@gmail.com">
-  <meta name="copyright" content="Copyright (c) <?= date("Y"); ?>. All Rights &reg;Reserved by shatkahonbd.com">
+  <meta name="copyright" content="Copyright (c) <?= date("Y"); ?>. All Rights &reg;Reserved by mixfashionhouse.com">
 
   <meta name="robots" content="index, follow">
   <meta name="googlebot" content="index, follow">

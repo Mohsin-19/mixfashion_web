@@ -135,7 +135,7 @@ $paymentSetting = paymentSetting();
                   <a class="nav-link nav_item" href="<?= base_url('/') ?>">Home</a>
                 </li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Latest</a>
+                  <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">All Categoorys</a>
                   <div class="dropdown-menu">
                     <ul class="pl-0">
                       <?php foreach ($all_categories as $key => $value) : ?>
@@ -148,7 +148,7 @@ $paymentSetting = paymentSetting();
                     </ul>
                   </div>
                 </li>
-                <?php foreach ($all_categories as $key => $value) : ?>
+                <!-- <?php foreach ($all_categories as $key => $value) : ?>
                   <?php
                   if (isset($value->subcategories) && $value->subcategories) :
                   ?>
@@ -169,7 +169,7 @@ $paymentSetting = paymentSetting();
                   <?php
                   endif;
                   ?>
-                <?php endforeach; ?>
+                <?php endforeach; ?> -->
 
                 <li><a class="nav-link nav_item" href="contact-us">Contact Us</a></li>
               </ul>

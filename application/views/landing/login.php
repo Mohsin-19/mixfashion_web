@@ -6,11 +6,11 @@
         <div class="login_wrap loginSubmitCard">
           <div class="padding_eight_all bg-white">
             <div class="heading_s1 text-center">
-              <img src="<?= base_url('assets/images/login-logo.png') ?>" class="login-logo" alt="shatkahonbd">
+              <img src="<?= base_url('assets/images/login-logo.png') ?>" class="login-logo" alt="mixfashion">
               <p class="login_continue">TO CONTINUE TO <span class="text-uppercase">Mix Fashion</span></p>
             </div>
 
-            <a href="<?= $facebook_auth_url ?>" class="css-zqtbdk">
+            <!-- <a href="<?= $facebook_auth_url ?>" class="css-zqtbdk">
               <span class="css-1vqao0l">
                 <span class="css-t5emrf">
                   <img src="<?= base_url("assets/landing/img/facebook-logo.svg") ?>" alt="" style="height: 18px; margin-right: 8px; width: 18px;"><span>Continue with Facebook</span>
@@ -24,11 +24,11 @@
                   <img src="<?= base_url("assets/landing/img/google-logo.svg") ?>" alt="" style="height: 18px; margin-right: 8px; width: 18px;"><span>Continue with Google</span>
                 </span>
               </span>
-            </a>
+            </a> -->
 
-            <div class="different_login">
+            <!-- <div class="different_login">
               <span> or</span>
-            </div>
+            </div> -->
 
             <div class="loginWithOtp">
               <form action="<?= site_url('login-submit') ?>" method="POST" id="customer_signin">

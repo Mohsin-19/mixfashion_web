@@ -38,7 +38,7 @@ if (isset($getSiteSetting->base_color) && $getSiteSetting->base_color) {
   $appTitle =  isset($getSiteSetting->site_title) && $getSiteSetting->site_title ? $getSiteSetting->site_title : '';
   ?>
   <meta property="fb:app_id" content="517977738399933">
-  <meta property="og:site_name" content="shatkahonbd">
+  <meta property="og:site_name" content="mixfashion">
   <meta property="og:title" content="<?= $appTitle; ?>">
   <meta property="og:description" content="<?= $appTitle ?>">
   <meta property="og:url" content="<?= site_url('/'); ?>">

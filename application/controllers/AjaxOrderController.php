@@ -88,7 +88,7 @@ class AjaxOrderController extends Cl_Controller
     $phone = $order->cus_phone ?? null;
     $email = $order->cus_email ?? null;
 
-    $txt = "Hello Sir/ Madam. Thank you for placing your order at http://okbazar.com.bd . Your order " . $order->order_number . " & order amount BDT " . $order->total_amount . ".";
+    $txt = "Hello Sir/ Madam. Thank you for placing your order at http://mixfashionhouse.com/ . Your order " . $order->order_number . " & order amount BDT " . $order->total_amount . ".";
     // $data['notifications_details'] = $txt;
     // $data['order_id'] = $id;
     // $data['date'] = date("Y-m-d", strtotime('today'));

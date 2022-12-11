@@ -1620,7 +1620,7 @@ function sendOnnoSMS($username, $password, $txt, $phone)
 
 function mim_sms($txt, $phone)
 {
-  try {
+    try {
       $url = "https://bulk.mimsms.com/smsapi";
        $data = [
         "api_key" => "C200197462fca510b9fc13.27097162",
@@ -1641,39 +1641,6 @@ function mim_sms($txt, $phone)
     } catch (\Throwable $th) {
       throw $th;
     }
-
-  // $url = "https://esms.mimsms.com/smsapi";
-  // $data = [
-  //   "api_key" => "C20068525f3fdb9a66e121.16607539",
-  //   "type" => "text",
-  //   "contacts" => "$phone",
-  //   "senderid" => "8809612446205",
-  //   "msg" => "$txt",
-  // ];
-  // $ch = curl_init();
-  // curl_setopt($ch, CURLOPT_URL, $url);
-  // curl_setopt($ch, CURLOPT_POST, 1);
-  // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-  // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-  // $response = curl_exec($ch);
-  // curl_close($ch);
-  // return $response;
-  /*
-          try{
-              $soapClient = new SoapClient("https://api2.onnorokomSMS.com/sendSMS.asmx?wsdl");
-              $paramArray = array(
-                  'userName' => $username,
-                  'userPassword' => $password,
-                  'messageText' => $txt,
-                  'numberList' => $phone,
-                  'smsType' => "TEXT",
-                  'maskName' => '',
-                  'campaignName' => '',
-              );
-              $soapClient->__call("OneToMany", array($paramArray));
-          } catch (Exception $e) {
-          }*/
 }
 
 

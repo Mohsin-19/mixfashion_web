@@ -214,6 +214,8 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                         $product_price = $attrItem['product_price'] ?? "";
                         $color_code = $attrItem['color_code'] ?? "";
                         $size_name = $attrItem['size_name'] ?? "";
+                        $qty = $attrItem['product_qty'] ?? "";
+                        
                       ?>
                         <?php if ($key == 0) : ?>
                           <tr>
@@ -224,6 +226,12 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                             <?php if ($size_name) : ?>
                               <td>Size</td>
                             <?php endif; ?>
+
+                            <!-- <td>Quantity</td>
+                            <?php if ($qty) : ?>
+                               <td><?=$qty?></td>
+                            <?php endif; ?> -->
+
                           </tr>
                         <?php endif; ?>
                         <tr>
@@ -244,6 +252,17 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                               </label>
                             </td>
                           <?php endif; ?>
+
+                          <?php if ($qty) : ?>
+                            <!-- <td class="align-middle">
+                              <label class="d-block m-0" for="attr-<?= $key ?>">
+                                <span class="attr-qty"><?= $qty ?></span>
+                              </label>
+                            </td> -->
+                          <?php endif; ?>
+
+
+
                         </tr>
                       <?php endforeach; ?>
                     </tbody>

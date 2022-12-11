@@ -222,6 +222,9 @@
                   <input type="number" name="attribute[<?= $key ?>][price]" value="<?= $att['product_price'] ?>" class="price form-control" min="0">
                 </td>
                 <td class="text-center">
+                  <input type="number" name="attribute[<?= $key ?>][qty]" value="<?= $att['product_qty'] ?>" class="qty form-control" min="0">
+                </td>
+                <td class="text-center">
                   <button type="button" class="btn btn-sm btn-danger remveItemAttr">Remove</button>
                 </td>
               </tr>
@@ -235,17 +238,18 @@
             </td>
             <td colspan="3"></td>
           </tr>
-          <tr id="firstAttributeRow" class="hidden">
+          <!-- <tr id="firstAttributeRow" class="hidden">
             <td class="text-center">
-              <select name="attribute[1]['color']" class="color form-control">
+              <select name="attribute[0]['color']" class="color form-control">
                 <option value="">No Color</option>
                 <?php foreach ($colors as $data) : ?>
                   <option value="<?= $data->id ?>"><?= $data->name ?></option>
                 <?php endforeach ?>
               </select>
             </td>
+
             <td class="text-center">
-              <select name="attribute[1]['size']" class="size form-control">
+              <select name="attribute[0]['size']" class="size form-control">
                 <option value="">No Size</option>
                 <?php foreach ($sizes as $data) : ?>
                   <option value="<?= $data->id ?>"><?= $data->name ?></option>
@@ -253,12 +257,15 @@
               </select>
             </td>
             <td class="text-center">
-              <input type="number" name="attribute[1]['price']" class="price form-control" min="0">
+              <input type="number" name="attribute[0]['price']" class="price form-control" min="0">
+            </td>
+            <td class="text-center">
+              <input type="number" name="attribute[0][qty]" class="qty form-control" min="0">
             </td>
             <td class="text-center">
               <button type="button" class="btn btn-sm btn-danger remveItemAttr">Remove</button>
             </td>
-          </tr>
+          </tr> -->
         </tfoot>
       </table>
     </div> <!-- card -->

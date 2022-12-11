@@ -311,7 +311,7 @@ class Item extends Cl_Controller
         $product_info['user_id'] = $this->session->userdata('user_id');
         $product_info['company_id'] = $this->session->userdata('company_id');
 
-        $attributes = $this->input->post('attribute');
+        $attributes = $this->input->post('attribute') != null ? $this->input->post('attribute') : [] ;
 
         if ($id == "") {
           check_permission('add_product');

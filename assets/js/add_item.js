@@ -350,8 +350,8 @@ $(function () {
       $(this).find('.color').attr('name', "attribute[" + i + "][color]");
       $(this).find('.size').attr('name', "attribute[" + i + "][size]");
       $(this).find('.price').attr('name', "attribute[" + i + "][price]");
+      $(this).find('.qty').attr('name', "attribute[" + i + "][qty]");
     });
-
   });
 
 });

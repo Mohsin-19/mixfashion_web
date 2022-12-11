@@ -360,7 +360,7 @@ class Ajaxpublic extends Cl_Controller
         $this->Common_model->insertInformation($data, "tbl_notifications");
 
         if ($phone) {
-          $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
 
         if ($email) {
@@ -580,9 +580,13 @@ class Ajaxpublic extends Cl_Controller
     $phone_number = $this->input->post('l_phone');
     $accept_terms = $this->input->post('accept_terms');
     $remember_me = $this->input->post('remember_me');
-    $return_data['status'] = false;
-    $return_data['l_phone'] = $phone_number;
-    $return_data['term'] = $accept_terms;
+    
+    // $return_data['status'] = false;
+    // $return_data['l_phone'] = $phone_number;
+    // $return_data['term'] = $accept_terms;
+
+    $return_data = "Error !";
+    
     if ($accept_terms) {
       $exists = $this->Common_model->checkPhoneNumberForOTP($phone_number);
       $otp = mt_rand(1000, 9999);
@@ -600,21 +604,23 @@ class Ajaxpublic extends Cl_Controller
       $txt = "{$otp} is your one time pin (OTP) for mixfashionhouse.com validity for OTP is 3 minutes.
       {$siteUrl}";
       //send sms
-      $smsSetting = getSMSSetting();
-      if ($smsSetting->enable_status == 1) {
-        $status = 1;
-        $status = sendSSL_WareSMS($txt, $phone_number);
-        // dd($status);
+      $status = mim_sms($txt, $phone_number);
+      
+      // dd($status);
+      // $return_data['status'] = true;
+      // $return_data['msg'] = 'OTP send your phone';
+      // $smsSetting = getSMSSetting();
+      // if ($smsSetting->enable_status == 1) {
+      //   $status = 1;
+      // } else {
+      //   $return_data['msg'] = 'OTP Something wrong';
+      // }
 
-        $return_data['status'] = true;
-        $return_data['msg'] = 'OTP send your phone';
-      } else {
-        $return_data['msg'] = 'OTP Something wrong';
-      }
+       return $status;
     } else {
       $return_data['msg'] = 'Please accept terms and condition';
     }
-    return $this->responseJson($return_data);
+    return $this->responseJson($status);
   }
 
 

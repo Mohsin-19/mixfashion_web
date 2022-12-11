@@ -58,18 +58,22 @@ class AttributeModel extends CI_Model
 
   public function updateOrInsertAttributes(array $attributes, $product_id)
   {
+
     $user_id = $this->session->userdata('user_id');
     $attributes_id = [];
     foreach ($attributes as $attribute) {
       $size_id = key_exists('size', $attribute) ? $attribute['size'] : null;
       $color_id = key_exists('color', $attribute) ? $attribute['color'] : null;
       $product_price = key_exists('price', $attribute) ? $attribute['price'] : 0;
+      $product_qty = key_exists('qty', $attribute) ? $attribute['qty'] : 0;
+
       if ($size_id || $color_id) {
         $data = [
           'product_id' => $product_id,
           'size_id' => $size_id,
           'color_id' => $color_id,
           'product_price' => $product_price,
+          'product_qty' => $product_qty,
           'user_id' => $user_id,
           'del_status' => 'Live',
         ];

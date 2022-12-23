@@ -1620,27 +1620,27 @@ function sendOnnoSMS($username, $password, $txt, $phone)
 
 function mim_sms($txt, $phone)
 {
-    try {
-      $url = "https://bulk.mimsms.com/smsapi";
-       $data = [
-        "api_key" => "C200197462fca510b9fc13.27097162",
-        "type" => "text",
-        "contacts" => $phone,
-        "senderid" => "8809612444006",
-        "msg" => $txt,
-      ];
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_POST, 1);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-      $response = curl_exec($ch);
-      curl_close($ch);
-      return $response;
-    } catch (\Throwable $th) {
-      throw $th;
-    }
+  try {
+    $url = "https://bulk.mimsms.com/smsapi";
+    $data = [
+      "api_key" => "C200197462fca510b9fc13.27097162",
+      "type" => "text",
+      "contacts" => $phone,
+      "senderid" => "8809612444006",
+      "msg" => $txt,
+    ];
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
+  } catch (\Throwable $th) {
+    throw $th;
+  }
 }
 
 
@@ -2007,5 +2007,15 @@ if (!function_exists('get_product_attributes')) {
   {
     $CI = &get_instance();
     return $CI->AttributeModel->product_attributes($product_id);
+  }
+}
+
+
+if (!function_exists('get_product_ordered_attributes')) {
+  function get_product_ordered_attributes($product_id)
+  {
+    $CI = &get_instance();
+    $ig_information = $CI->db->query("SELECT `color_id`, `size_id`, `product_id`, `order_status`, SUM(`qty`) AS `sum_qty` FROM `tbl_order_items` WHERE `product_id`='$product_id' And `order_status` NOT IN (1, 'c') group by `size_id`,`color_id`")->result_array();
+    return $ig_information ? json_decode(json_encode($ig_information), true) : [];
   }
 }

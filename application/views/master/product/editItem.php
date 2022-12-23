@@ -82,8 +82,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                class="fa fa-2x">×</i></span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-2x">×</i></span></button>
         <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-square-o txt-uh-48"></i> <?php echo lang('add_product_category'); ?>
         </h4>
       </div>
@@ -92,8 +91,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label"><?php echo lang('name'); ?><span class="txt-uh-24"> *</span></label>
             <div class="col-sm-7">
-              <input type="text" autocomplete="off" class="form-control" name="name" id="name_cat" placeholder="<?php echo lang('name'); ?>"
-                     value="">
+              <input type="text" autocomplete="off" class="form-control" name="name" id="name_cat" placeholder="<?php echo lang('name'); ?>" value="">
               <div class="alert alert-error error-msg name_err_msg_contnr txt-uh-21">
                 <p class="name_err_msg"></p>
               </div>
@@ -102,8 +100,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label"><?php echo lang('description'); ?></label>
             <div class="col-sm-7">
-              <input tabindex="2" autocomplete="off" type="text" id="description_cat" name="description" class="form-control"
-                     placeholder="<?php echo lang('description'); ?>" value="<?php echo set_value('description'); ?>">
+              <input tabindex="2" autocomplete="off" type="text" id="description_cat" name="description" class="form-control" placeholder="<?php echo lang('description'); ?>" value="<?php echo set_value('description'); ?>">
               <div class="alert alert-error error-msg sdescription_err_msg_contnr txt-uh-21">
                 <p class="description_err_msg"></p>
               </div>
@@ -124,8 +121,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                class="fa fa-2x">×</i></span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-2x">×</i></span></button>
         <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-square-o txt-uh-48"></i> <?php echo lang('add_supplier'); ?></h4>
       </div>
       <div class="modal-body">
@@ -133,8 +129,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label"><?php echo lang('supplier_name'); ?><span class="txt-uh-24"> *</span></label>
             <div class="col-sm-7">
-              <input type="text" autocomplete="off" class="form-control" name="name" id="name_supplier"
-                     placeholder="<?php echo lang('supplier_name'); ?>" value="">
+              <input type="text" autocomplete="off" class="form-control" name="name" id="name_supplier" placeholder="<?php echo lang('supplier_name'); ?>" value="">
               <div class="alert alert-error error-msg name_err_msg_contnr txt-uh-21">
                 <p class="name_err_msg"></p>
               </div>
@@ -143,8 +138,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label"><?php echo lang('contact_person'); ?><span class="txt-uh-24"> *</span></label>
             <div class="col-sm-7">
-              <input autocomplete="off" type="text" id="contact_person" name="contact_person" class="form-control"
-                     placeholder="<?php echo lang('contact_person'); ?>" value="<?php echo set_value('contact_person'); ?>">
+              <input autocomplete="off" type="text" id="contact_person" name="contact_person" class="form-control" placeholder="<?php echo lang('contact_person'); ?>" value="<?php echo set_value('contact_person'); ?>">
               <div class="alert alert-error error-msg sdescription_err_msg_contnr txt-uh-21">
                 <p class="contact_person_err_msg"></p>
               </div>
@@ -153,8 +147,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label"><?php echo lang('phone'); ?><span class="txt-uh-24"> *</span></label>
             <div class="col-sm-7">
-              <input autocomplete="off" type="text" id="phone" name="phone" class="form-control" placeholder="<?php echo lang('phone'); ?>"
-                     value="<?php echo set_value('phone'); ?>">
+              <input autocomplete="off" type="text" id="phone" name="phone" class="form-control" placeholder="<?php echo lang('phone'); ?>" value="<?php echo set_value('phone'); ?>">
               <div class="alert alert-error error-msg sdescription_err_msg_contnr txt-uh-21">
                 <p class="phone_err_msg"></p>
               </div>
@@ -175,8 +168,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                class="fa fa-2x">×</i></span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-2x">×</i></span></button>
         <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-square-o txt-uh-48"></i> <?php echo lang('add_unit'); ?></h4>
       </div>
       <div class="modal-body">
@@ -184,8 +176,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label"><?php echo lang('unit_name'); ?><span class="txt-uh-24"> *</span></label>
             <div class="col-sm-7">
-              <input type="text" autocomplete="off" class="form-control" name="unit_name" id="unit_name_p"
-                     placeholder="<?php echo lang('name'); ?>" value="">
+              <input type="text" autocomplete="off" class="form-control" name="unit_name" id="unit_name_p" placeholder="<?php echo lang('name'); ?>" value="">
               <div class="alert alert-error error-msg unit_name_err_msg_contnr txt-uh-21">
                 <p class="unit_name_err_msg"></p>
               </div>
@@ -194,8 +185,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label"><?php echo lang('description'); ?></label>
             <div class="col-sm-7">
-              <input tabindex="2" autocomplete="off" type="text" name="description" id="description_p" class="form-control"
-                     placeholder="<?php echo lang('description'); ?>" value="<?php echo set_value('description'); ?>">
+              <input tabindex="2" autocomplete="off" type="text" name="description" id="description_p" class="form-control" placeholder="<?php echo lang('description'); ?>" value="<?php echo set_value('description'); ?>">
               <div class="alert alert-error error-msg sdescription_err_msg_contnr txt-uh-21">
                 <p class="description_err_msg"></p>
               </div>
@@ -216,8 +206,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i
-                class="fa fa-2x">×</i></span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-2x">×</i></span></button>
         <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-square-o txt-uh-48"></i> <?php echo lang('add_unit'); ?></h4>
       </div>
       <div class="modal-body">
@@ -225,8 +214,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label"><?php echo lang('unit_name'); ?><span class="txt-uh-24"> *</span></label>
             <div class="col-sm-7">
-              <input type="text" autocomplete="off" class="form-control" name="unit_name" id="unit_name_sale"
-                     placeholder="<?php echo lang('name'); ?>" value="">
+              <input type="text" autocomplete="off" class="form-control" name="unit_name" id="unit_name_sale" placeholder="<?php echo lang('name'); ?>" value="">
               <div class="alert alert-error error-msg unit_name_err_msg_contnr txt-uh-21">
                 <p class="unit_name_err_msg"></p>
               </div>
@@ -235,8 +223,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label"><?php echo lang('description'); ?></label>
             <div class="col-sm-7">
-              <input tabindex="2" autocomplete="off" type="text" name="description" id="description_s" class="form-control"
-                     placeholder="<?php echo lang('description'); ?>" value="<?php echo set_value('description'); ?>">
+              <input tabindex="2" autocomplete="off" type="text" name="description" id="description_s" class="form-control" placeholder="<?php echo lang('description'); ?>" value="<?php echo set_value('description'); ?>">
               <div class="alert alert-error error-msg sdescription_err_msg_contnr txt-uh-21">
                 <p class="description_err_msg"></p>
               </div>
@@ -258,7 +245,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <strong><?php echo lang('select_image'); ?></strong>
-        <br/>
+        <br />
         <input type="file" id="upload">
       </div>
       <div class="modal-body">
@@ -307,50 +294,50 @@
 
 
 <script>
-   function readURL(input, selector) {
-      if (input.files && input.files[0]) {
-         var reader = new FileReader();
-         reader.onload = function (e) {
-            selector.attr('src', e.target.result);
-         }
-         reader.readAsDataURL(input.files[0]); // convert to base64 string
+  function readURL(input, selector) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        selector.attr('src', e.target.result);
       }
-   }
+      reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
+  }
 
-   $(function () {
+  $(function() {
 
-      default_editor('#description', 200);
-      simple_editor('.editor', 450);
+    default_editor('#description', 200);
+    simple_editor('.editor', 450);
 
 
-      $(".image").change(function () {
-         var s_photo = $(this).closest('.form-group').find('.s_photo');
-         readURL(this, s_photo);
-      });
+    $(".image").change(function() {
+      var s_photo = $(this).closest('.form-group').find('.s_photo');
+      readURL(this, s_photo);
+    });
 
-      $('body').on('click', '.btn-continue', function () {
-         var href = $(this).attr('href');
-         console.log(href)
-         $(".nav-tabs").find('li').removeClass('active');
-         $(".nav-tabs").find('[href="' + href + '"]').closest('li').addClass('active');
+    $('body').on('click', '.btn-continue', function() {
+      var href = $(this).attr('href');
+      console.log(href)
+      $(".nav-tabs").find('li').removeClass('active');
+      $(".nav-tabs").find('[href="' + href + '"]').closest('li').addClass('active');
 
-      }).on('click', '.nav-tabs a', function (e) {
-         window.location.hash = e.target.hash;
+    }).on('click', '.nav-tabs a', function(e) {
+      window.location.hash = e.target.hash;
 
-      }).on('click', '.removeGallery', function (e) {
-         e.preventDefault();
-         var formGroup = $(this).closest('.form-group');
-         var demoImag = '/assets/images/no_image_thumb.png';
-         formGroup.find('img').attr('src', demoImag);
-         formGroup.find('input[type="hidden"]').val('');
+    }).on('click', '.removeGallery', function(e) {
+      e.preventDefault();
+      var formGroup = $(this).closest('.form-group');
+      var demoImag = '/assets/images/no_image_thumb.png';
+      formGroup.find('img').attr('src', demoImag);
+      formGroup.find('input[type="hidden"]').val('');
 
-      });
+    });
 
-      // Javascript to enable link to tab
-      var hash = location.hash.replace(/^#/, ''); // ^ means starting, meaning only match the first hash
-      if (hash) {
-         $('.nav-tabs a[href="#' + hash + '"]').tab('show');
-      }
+    // Javascript to enable link to tab
+    var hash = location.hash.replace(/^#/, ''); // ^ means starting, meaning only match the first hash
+    if (hash) {
+      $('.nav-tabs a[href="#' + hash + '"]').tab('show');
+    }
 
-   });
+  });
 </script>

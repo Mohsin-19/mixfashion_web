@@ -3,7 +3,7 @@
     <label><?= lang('sale_price'); ?> <span class="required_star">*</span></label>
     <table class="width_100_p">
       <tr>
-        <td><input tabindex="4" autocomplete="off" type="text" onfocus="this.select();" id="sale_price" name="sale_price" class="form-control integerchk"  placeholder="<?php echo lang('sale_price'); ?>" value="<?php echo escape_output($product_details->sale_price); ?>"></td>
+        <td><input tabindex="4" autocomplete="off" type="text" onfocus="this.select();" id="sale_price" name="sale_price" class="form-control integerchk" placeholder="<?php echo lang('sale_price'); ?>" value="<?php echo escape_output($product_details->sale_price); ?>"></td>
         <td class="width_1_p c_txt_right"> <span class="label_aligning_total_loss">
             <?= escape_output($this->session->userdata('currency')); ?>
           </span></td>
@@ -16,7 +16,7 @@
     <label><?= lang('purchase_price'); ?> <span class="required_star">*</span></label>
     <table class="width_100_p">
       <tr>
-        <td><input tabindex="5" autocomplete="off" type="text" onfocus="this.select();" id="purchase_price" name="purchase_price" class="form-control integerchk disable_service"  placeholder="<?= lang('purchase_price'); ?>" value="<?= escape_output($product_details->purchase_price); ?>"></td>
+        <td><input tabindex="5" autocomplete="off" type="text" onfocus="this.select();" id="purchase_price" name="purchase_price" class="form-control integerchk disable_service" placeholder="<?= lang('purchase_price'); ?>" value="<?= escape_output($product_details->purchase_price); ?>"></td>
         <td class="width_1_p c_txt_right"> <span class="label_aligning_total_loss">
             <?= escape_output($this->session->userdata('currency')); ?>
           </span></td>
@@ -25,7 +25,8 @@
     </table>
     <?= show_field_error('purchase_price'); ?>
   </div> <!-- form-group -->
-  <div class="form-group col-md-3">
+
+  <!-- <div class="form-group col-md-3">
     <label><?= lang('opening_stock'); ?></label>
     <table class="width_100_p">
       <tr>
@@ -37,7 +38,9 @@
       </tr>
     </table>
     <?= show_field_error('opening_stock'); ?>
-  </div> <!-- form-group -->
+  </div>  -->
+
+  <!-- form-group -->
   <div class="form-group col-md-3">
     <label><?= lang('code'); ?> <span class="required_star">*</span></label>
     <input tabindex="7" autocomplete="off" type="text" onfocus="select();" id="code_" name="code" class="form-control" placeholder="<?= lang('code'); ?>" value="<?= escape_output($product_details->code); ?>">
@@ -192,15 +195,34 @@
             <th class="text-center" style="width: 20%;">Color</th>
             <th class="text-center" style="width: 20%;">Size</th>
             <th class="text-center" style="width: 20%;">Price</th>
+            <th class="text-center" style="width: 20%;">Qty</th>
             <th class="text-center" style="width: 20%;">Option</th>
           </tr>
         </thead>
         <tbody id="attributeTableTbody">
           <?php
           $attr = get_product_attributes($product_details->id);
+          $order_attr = get_product_ordered_attributes($product_details->id);
+          $count = count($order_attr);
+          $result = [];
+
+          foreach ($attr as $key => $value) {
+            if ($count > $key) {
+              if ($value['color_id'] == $order_attr[$key]['color_id'] && $value['size_id'] == $order_attr[$key]['size_id']) {
+                $result[] = array_merge($value, $order_attr[$key]);
+                $result[$key]['product_qty'] = $result[$key]['product_qty'] >  $result[$key]['sum_qty'] ? $result[$key]['product_qty'] - $result[$key]['sum_qty'] : 0;
+              } else {
+                $result[] = $value;
+              }
+            } else {
+              $result[] = $value;
+            }
+          }
+          // dd($result);
           ?>
-          <?php if (count($attr) > 0) : ?>
-            <?php foreach ($attr as $key => $att) : ?>
+
+          <?php if (count($result) > 0) : ?>
+            <?php foreach ($result as $key => $att) : ?>
               <tr <?= $key == 0 ? 'id="firstAttributeRow"' : '' ?>>
                 <td class="text-center">
                   <select name="attribute[<?= $key ?>][color]" class="color form-control">

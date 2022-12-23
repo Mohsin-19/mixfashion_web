@@ -20,7 +20,6 @@ class OrderManagement extends Cl_Controller
     $this->load->model('Common_model');
     $this->Common_model->setDefaultTimezone();
     $this->load->library('form_validation');
-
     check_permission(['show_order', 'print_invoice', 'print_package_slip', 'process_order', 'dispatch_order', 'complete_order', 'return_order', 'cancel_order', 'assign_delivery', 'add_note', 'product_purchase']);
   }
 

@@ -202,18 +202,42 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                 <?= escape_output($product->description) ?>
               </div>
 
-              <?php if (!empty($attrData)) : ?>
+              <?php
+              $attr = get_product_attributes($product->id);
+              $order_attr = get_product_ordered_attributes($product->id);
+
+
+              $count = count($order_attr);
+              $result = [];
+
+              foreach ($attr as $key => $value) {
+                if ($count > $key) {
+                  if ($value['color_id'] == $order_attr[$key]['color_id'] || $value['size_id'] == $order_attr[$key]['size_id']) {
+                    $result[] = array_unique(array_merge($value, $order_attr[$key]));
+                  } else {
+                    $result[] = $value;
+                  }
+                } else {
+                  $result[] = $value;
+                }
+              }
+
+              ?>
+
+              <?php if (!empty($result)) : ?>
                 <div class="pr_switch_wrap">
                   <table class="table attrTable table-sm table-bordered text-center " style="max-width: 350px;">
                     <tbody>
                       <?php
-                      foreach ($attrData as $key => $attrItem) :
+                      foreach ($result as $key => $attrItem) :
                         $color_id = $attrItem['color_id'] ?? 0;
                         $color_name = $attrItem['color_name'] ?? "";
                         $size_id = $attrItem['size_id'] ?? 0;
                         $product_price = $attrItem['product_price'] ?? "";
                         $color_code = $attrItem['color_code'] ?? "";
                         $size_name = $attrItem['size_name'] ?? "";
+                        $qty = $attrItem['product_qty'] ?? 0;
+
                       ?>
                         <?php if ($key == 0) : ?>
                           <tr>
@@ -226,25 +250,48 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                             <?php endif; ?>
                           </tr>
                         <?php endif; ?>
-                        <tr>
-                          <td class="align-middle">
-                            <input type="radio" name="activeAttribute" class="AttrProduct<?= $color_id + $size_id ?>" data-color-id="<?= $color_id ?>" data-color-name="<?= $color_name ?>" data-size-id="<?= $size_id ?>" data-size-name="<?= $size_name ?>" data-price="<?= $product_price ?>" value="<?= $product->id ?>" id="attr-<?= $key ?>" <?= $key == 0 ? 'checked="checked"' : '' ?>>
-                          </td>
-                          <?php if ($color_code) : ?>
+
+                        <?php if ($qty > 0) { ?>
+                          <tr>
                             <td class="align-middle">
-                              <label class="d-block m-0" for="attr-<?= $key ?>">
-                                <span class="attr-color" style="background-color: <?= $color_code ?>"></span>
-                              </label>
+                              <input type="radio" name="activeAttribute" class="AttrProduct<?= $color_id + $size_id ?>" data-color-id="<?= $color_id ?>" data-color-name="<?= $color_name ?>" data-size-id="<?= $size_id ?>" data-size-name="<?= $size_name ?>" data-qty="<?= $qty ?>" data-price="<?= $product_price ?>" value="<?= $product->id ?>" id="attr-<?= $key ?>" <?= $key == 0 ? 'checked="checked"' : '' ?>>
                             </td>
-                          <?php endif; ?>
-                          <?php if ($size_name) : ?>
+                            <?php if ($color_code) : ?>
+                              <td class="align-middle">
+                                <label class="d-block m-0" for="attr-<?= $key ?>">
+                                  <span class="attr-color" style="background-color: <?= $color_code ?>"></span>
+                                </label>
+                              </td>
+                            <?php endif; ?>
+                            <?php if ($size_name) : ?>
+                              <td class="align-middle">
+                                <label class="d-block m-0" for="attr-<?= $key ?>">
+                                  <span class="attr-size"><?= $size_name ?></span>
+                                </label>
+                              </td>
+                            <?php endif; ?>
+                          </tr>
+                        <?php } else { ?>
+                          <!-- <tr>
                             <td class="align-middle">
-                              <label class="d-block m-0" for="attr-<?= $key ?>">
-                                <span class="attr-size"><?= $size_name ?></span>
-                              </label>
+                              <span class="text-danger">Not In stock</span>
                             </td>
-                          <?php endif; ?>
-                        </tr>
+                            <?php if ($color_code) : ?>
+                              <td class="align-middle">
+                                <label class="d-block m-0" for="attr-<?= $key ?>">
+                                  <span class="attr-color" style="background-color: <?= $color_code ?>"></span>
+                                </label>
+                              </td>
+                            <?php endif; ?>
+                            <?php if ($size_name) : ?>
+                              <td class="align-middle">
+                                <label class="d-block m-0" for="attr-<?= $key ?>">
+                                  <span class="attr-size"><?= $size_name ?></span>
+                                </label>
+                              </td>
+                            <?php endif; ?>
+                          </tr> -->
+                        <?php } ?>
                       <?php endforeach; ?>
                     </tbody>
                   </table>
@@ -270,7 +317,7 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                   <div class="input-group-prepend">
                     <button type="button" class="btn btn_m" data-id="<?= $product->id ?>"><i class="icon-minus"></i></button>
                   </div>
-                  <input type="text" class="qty qty_<?= $product->id ?> form-control text-center" value="0" readonly="readonly">
+                  <input type="text" id="pro_qty" class="qty qty_<?= $product->id ?> form-control text-center" value="0" readonly="readonly">
                   <div class="input-group-append">
                     <button type="button" class="btn btn_p" data-id="<?= $product->id ?>"><i class="icon-plus"></i></button>
                   </div>

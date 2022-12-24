@@ -17,11 +17,11 @@ window.numberWithCommas = function (inputNumber) {
   var inputNumber =
     x.toString().split(".")[0].length > 3
       ? x
-        .toString()
-        .substring(0, x.toString().split(".")[0].length - 3)
-        .replace(/\B(?=(\d{2})+(?!\d))/g, ",") +
-      "," +
-      x.toString().substring(x.toString().split(".")[0].length - 3)
+          .toString()
+          .substring(0, x.toString().split(".")[0].length - 3)
+          .replace(/\B(?=(\d{2})+(?!\d))/g, ",") +
+        "," +
+        x.toString().substring(x.toString().split(".")[0].length - 3)
       : x.toString();
   return currency + " " + inputNumber;
 };
@@ -149,6 +149,7 @@ function checkout_items(index, item, cart_price, row_total) {
   let name = item.hasOwnProperty("name") ? item.name : "";
   let color_name = item?.color_name || null;
   let size_name = item?.size_name || null;
+  let attr_qty = item?.attr_qty || null;
   let delivery_charge = item.hasOwnProperty("actual_del_charge")
     ? item.actual_del_charge
     : 0;
@@ -158,29 +159,26 @@ function checkout_items(index, item, cart_price, row_total) {
           <td class="text-center">${index + 1}</td>
           <td> <a href="/product/${id}">${name}</a> <br> <small>${numberWithCommas(
     cart_price
-  )}</small> ${delivery_charge
+  )}</small> ${
+    delivery_charge
       ? `<small>| Delivery charge: ${numberWithCommas(delivery_charge)}</small>`
       : ""
-    }${size_name
-      ? `<p class="m-0 small">Size: ${size_name}</p>`
-      : ""
-    }${color_name
-      ? `<p class="m-0 small">Color: ${color_name}</p>`
-      : ""
-    }</td>
-          <td class="text-center">
-            <div class="input-group input-group-sm plus-minus-group mx-auto">
-              <div class="input-group-prepend">
-                <button type="button" data-id="${id}" class="btn btn_m "><i class="icon-minus"></i></button>
-              </div>
-              <input type="text" value="${cart_qty}" class="form-control text-center" readonly="readonly">
-              <div class="input-group-append">
-                <button type="button" data-id="${id}" class="btn btn_p "><i class="icon-plus"></i></button>
-              </div>
-            </div>
-          </td>
-          <td class="text-right">${numberWithCommas(row_total)}</td>
-        </tr>`;
+  }${size_name ? `<p class="m-0 small">Size: ${size_name}</p>` : ""}${
+    color_name ? `<p class="m-0 small">Color: ${color_name}</p>` : ""
+  }</td>
+    <td class="text-center">
+      <div class="input-group input-group-sm plus-minus-group mx-auto">
+        <div class="input-group-prepend">
+          <button type="button" data-id="${id}" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" class="btn btn_m "><i class="icon-minus"></i></button>
+        </div>
+        <input type="text" value="${cart_qty}" class="form-control text-center" readonly="readonly">
+        <div class="input-group-append">
+          <button type="button" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" data-id="${id}" class="btn btn_p "><i class="icon-plus"></i></button>
+        </div>
+      </div>
+    </td>
+    <td class="text-right">${numberWithCommas(row_total)}</td>
+  </tr>`;
 }
 
 /**
@@ -208,6 +206,8 @@ function renderCart() {
     var size_id = item.size_id;
     var row_tax = item.tax_percentage;
     var cart_qty = item.quantity;
+    var attr_qty = item.attr_qty;
+
     var category_id = item.hasOwnProperty("category_id") ? item.category_id : 0;
     var subcategory_id = item.hasOwnProperty("subcategory_id")
       ? item.subcategory_id
@@ -261,11 +261,14 @@ function renderCart() {
 
     cartItem += `<li>
                   <a href="/remove" class="item_remove removeItem" data-id="${id}"><i class="ion-close"></i></a>
-                  <a href="/product/${id}"><img src="${item.image
-      }" alt="cart_thumb2">${item.name}</a>
-                  <span class="cart_quantity"> ${cart_qty} x <span class="cart_amount"></span> ${numberWithCommas(
-        cart_price
-      )}</span>
+                  <a href="/product/${id}"><img src="${
+      item.image
+    }" alt="cart_thumb2">${
+      item.name
+    }</a><span class="cart_quantity" data-value="${cart_qty}"> ${cart_qty} x <span class="cart_amount"></span> ${numberWithCommas(
+      cart_price
+    )}</span>
+                    <input class="qty" type="hidden" value="${attr_qty}">
                 </li>`;
   });
 
@@ -274,9 +277,7 @@ function renderCart() {
   window.total_cart_tax = Number(total_tax);
 
   $(".cart_count").text(items.length);
-  $(".cart_footer")
-    .find(".totalVal")
-    .text(numberWithCommas(itemsTotal));
+  $(".cart_footer").find(".totalVal").text(numberWithCommas(itemsTotal));
 
   // window.total_discount = parseFloat(total_discount);
 
@@ -340,62 +341,95 @@ $(document)
     }
   })
   .on("click", ".btn_p, .btnCart", function () {
-    var product_id = $(this).attr("data-id");
-    var id = parseInt(product_id);
-    if (Cart.exists(id)) {
-      Cart.quantity(id, 1);
+    var activeAttribute = dom.find("input[name=activeAttribute]:checked");
+    var inputQty = 0;
+    var productQty = 0;
+    var plusBtn = $(this);
+
+    if (activeAttribute.length) {
+      inputQty = $("#pro_qty").val();
+      productQty = activeAttribute.attr("data-qty");
+      plusBtn = $(".btn_p");
     } else {
-      var product = product_item(id);
-      var activeAttribute = dom.find("input[name=activeAttribute]:checked");
-      if (activeAttribute.length) {
+      inputQty = $(this).attr("data-cart-qty");
+      productQty = $(this).attr("data-qty");
+    }
 
-        var attribute_price = activeAttribute.attr("data-price");
-        attribute_price = attribute_price ? Number(attribute_price) : 0;
+    if (parseInt(productQty) > parseInt(inputQty)) {
+      var product_id = $(this).attr("data-id");
+      var id = parseInt(product_id);
+      if (Cart.exists(id)) {
+        Cart.quantity(id, 1);
+      } else {
+        var product = product_item(id);
+        if (activeAttribute.length) {
+          var attribute_price = activeAttribute.attr("data-price");
+          attribute_price = attribute_price ? Number(attribute_price) : 0;
+          product.color_id = activeAttribute.attr("data-color-id");
+          product.color_name = activeAttribute.attr("data-color-name");
+          product.size_id = activeAttribute.attr("data-size-id");
+          product.size_name = activeAttribute.attr("data-size-name");
+          product.attr_qty = productQty;
 
-        product.color_id = activeAttribute.attr("data-color-id");
-        product.color_name = activeAttribute.attr("data-color-name");
-        product.size_id = activeAttribute.attr("data-size-id");
-        product.size_name = activeAttribute.attr("data-size-name");
-        if (attribute_price) {
-          product.price = attribute_price;
+          if (attribute_price) {
+            product.price = attribute_price;
+          }
         }
-      }
 
-      let product_price = parseInt(product.price);
-      let product_id = parseInt(product.id);
-      if (product_id && product_price) {
-        setTimeout(() => {
-          fb_pixel_AddToCart(
-            [{ id: `SKU-${product_id}`, quantity: 1 }],
-            product_price
-          );
-        }, 3000);
+        let product_price = parseInt(product.price);
+        let product_id = parseInt(product.id);
+        if (product_id && product_price) {
+          setTimeout(() => {
+            fb_pixel_AddToCart(
+              [{ id: `SKU-${product_id}`, quantity: 1 }],
+              product_price
+            );
+          }, 3000);
+        }
+        Cart.add(product, 1);
       }
-      //  console.log(product);
-      Cart.add(product, 1);
+    } else {
+      plusBtn.prop("disabled", true);
     }
   })
+
   .on("change", "input[name=activeAttribute]", function () {
     var thisItem = $(this);
-    var item_id = parseInt(thisItem.val());
-    let price = thisItem.attr("data-price");
-    price = price ? Number(price) : 0;
-
-    if (Cart.exists(item_id)) {
-      Cart.update(item_id, "color_id", thisItem.attr("data-color-id"));
-      Cart.update(item_id, "color_name", thisItem.attr("data-color-name"));
-      Cart.update(item_id, "size_id", thisItem.attr("data-size-id"));
-      Cart.update(item_id, "size_name", thisItem.attr("data-size-name"));
-      if (price) {
-        Cart.update(item_id, "price", parseInt(price));
+    var qty = thisItem.attr("data-qty");
+    console.log(qty, inputQty);
+    if (qty >= inputQty) {
+      $(".btn_p").prop("disabled", false);
+      var item_id = parseInt(thisItem.val());
+      let price = thisItem.attr("data-price");
+      price = price ? Number(price) : 0;
+      if (Cart.exists(item_id)) {
+        Cart.update(item_id, "color_id", thisItem.attr("data-color-id"));
+        Cart.update(item_id, "color_name", thisItem.attr("data-color-name"));
+        Cart.update(item_id, "size_id", thisItem.attr("data-size-id"));
+        Cart.update(item_id, "size_name", thisItem.attr("data-size-name"));
+        if (price) {
+          Cart.update(item_id, "price", parseInt(price));
+        }
+      } else {
+        if (price) {
+          $(".product_price .price").text(price);
+        }
       }
     } else {
-      if (price) {
-        $(".product_price .price").text(price);
-      }
+      $(".qty_3").val(qty);
+      $(".btn_p").prop("disabled", true);
     }
   })
   .on("click", ".btn_m", function () {
+    var plusBtn = $(this);
+    var inputQty = $(this).attr("data-cart-qty");
+
+    if (inputQty) {
+      plusBtn.closest(".btn_p").prop("disabled", false);
+    } else {
+      $(".btn_p").prop("disabled", false);
+    }
+
     var product_id = $(this).attr("data-id");
     var id = parseInt(product_id);
     if (Cart.exists(id)) {
@@ -411,10 +445,7 @@ $(document)
       .closest(".product_gallery_item")
       .find(".product_gallery_item")
       .removeClass("active");
-    $(this)
-      .closest(".product-image")
-      .find("#product_img")
-      .attr("src", image);
+    $(this).closest(".product-image").find("#product_img").attr("src", image);
     $(this)
       .closest(".product-image")
       .find("#product_img")
@@ -511,9 +542,7 @@ $(document)
   .on("click", ".close_coupon", function (e) {
     e.preventDefault();
     coupon_effect_calculation(0, "", "");
-    $("#check_coupon")
-      .find("#coupon")
-      .val("");
+    $("#check_coupon").find("#coupon").val("");
   });
 
 //select date
@@ -528,12 +557,8 @@ $(document)
     var cart_list = Cart.list();
     var cart_total = Cart.total();
     var total_items = cart_list.length;
-    var total_payable = $("#checkout_Summary")
-      .find(".checkout_total")
-      .text();
-    var vat_charge = $("#checkout_Summary")
-      .find(".vat_charge")
-      .text();
+    var total_payable = $("#checkout_Summary").find(".checkout_total").text();
+    var vat_charge = $("#checkout_Summary").find(".vat_charge").text();
     var total_tax = 0;
     var data =
       $(this).serialize() +
@@ -648,8 +673,8 @@ $(document)
                 $("#hidden_order_id").val(data.order_number);
                 $("#success_url_ssl").val(
                   base_url +
-                  "paymentStatus?p_type=ssl&&msg=payment_success&&order_id=" +
-                  data.order_number
+                    "paymentStatus?p_type=ssl&&msg=payment_success&&order_id=" +
+                    data.order_number
                 );
                 $("#sslcommerz_form").trigger("submit");
                 let status = facebook_pixel_purchase_event();
@@ -695,7 +720,6 @@ $(document)
       }
     }
   });
-
 
 function facebook_pixel_purchase_event() {
   var cartItems = Cart.list();

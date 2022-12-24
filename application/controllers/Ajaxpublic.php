@@ -353,14 +353,14 @@ class Ajaxpublic extends Cl_Controller
         $data = array();
         $order = $this->Common_model->getOrderData($id);
         //store notification when happened an order
-        $txt = "Hello Sir/ Madam. Thank you for placing your order at https://shatkahonbd.com Your order " . $order_number . " & order amount BDT " . $order->total_amount . ".";
+        $txt = "Hello Sir/ Madam. Thank you for placing your order at http://mixfashionhouse.com/ Your order " . $order_number . " & order amount BDT " . $order->total_amount . ".";
         $data['notifications_details'] = $txt;
         $data['order_id'] = $id;
         $data['date'] = date("Y-m-d", strtotime('today'));
         $this->Common_model->insertInformation($data, "tbl_notifications");
 
         if ($phone) {
-          $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
 
         if ($email) {
@@ -597,17 +597,18 @@ class Ajaxpublic extends Cl_Controller
         $this->Common_model->insertInformation($data, "tbl_customers");
       }
       $siteUrl = site_url('/');
-      $txt = "{$otp} is your one time pin (OTP) for shatkahonbd.com validity for OTP is 3 minutes.
+      $txt = "{$otp} is your one time pin (OTP) for mixfashionhouse.com validity for OTP is 3 minutes.
       {$siteUrl}";
       //send sms
       $smsSetting = getSMSSetting();
+
       if ($smsSetting->enable_status == 1) {
         $status = 1;
-        $status = sendSSL_WareSMS($txt, $phone_number);
-        // dd($status);
-
+        // $status = sendSSL_WareSMS($txt, $phone_number);
+        $status = mim_sms($txt, $phone_number);
         $return_data['status'] = true;
         $return_data['msg'] = 'OTP send your phone';
+        
       } else {
         $return_data['msg'] = 'OTP Something wrong';
       }

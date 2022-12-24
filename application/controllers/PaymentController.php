@@ -273,7 +273,7 @@ class PaymentController extends CI_Controller
               $data['date'] = date("Y-m-d", strtotime('today'));
               $this->Common_model->insertInformation($data, "tbl_notifications");
               //send sms
-              sendSSL_WareSMS($txt, $this->session->userdata('c_phone'), 1);
+              mim_sms($txt, $this->session->userdata('c_phone'), 1);
               //send email
               sendEmail($txt, $this->session->userdata('c_email'), '', 1);
               $this->session->unset_userdata('order_id_str');
@@ -315,14 +315,14 @@ class PaymentController extends CI_Controller
           $this->Common_model->updateInformation($data, $order_id, "tbl_orders");
           $order_number = $order->order_number;
 
-          $txt = "Hello Sir/ Madam. Thank you for placing your order at https://shatkahonbd.com . Your order " . $order_number . " & order amount BDT " . $order->total_amount . ".";
+          $txt = "Hello Sir/ Madam. Thank you for placing your order at http://mixfashionhouse.com/. Your order " . $order_number . " & order amount BDT " . $order->total_amount . ".";
 
           $data['notifications_details'] = $txt;
           $data['order_id'] = $order_id;
           $data['date'] = date("Y-m-d", strtotime('today'));
           $this->Common_model->insertInformation($data, "tbl_notifications");
           //send email
-          sendSSL_WareSMS($txt, $this->session->userdata('c_phone'));
+          mim_sms($txt, $this->session->userdata('c_phone'));
 
           $c_email = $this->session->userdata('c_email');
           if ($c_email) {
@@ -382,7 +382,7 @@ class PaymentController extends CI_Controller
         $data['date'] = date("Y-m-d", strtotime('today'));
         $this->Common_model->insertInformation($data, "tbl_notifications");
         //send email
-        sendSSL_WareSMS($txt, $this->session->userdata('c_phone'));
+        mim_sms($txt, $this->session->userdata('c_phone'));
         //send sms
         sendEmail($txt, $this->session->userdata('c_email'), '', 1);
 
@@ -484,7 +484,7 @@ class PaymentController extends CI_Controller
             $this->Common_model->insertInformation($data, "tbl_notifications");
             //send email
             //                        smsSend($txt, $this->session->userdata('c_phone'), 1);
-            sendSSL_WareSMS($txt, $this->session->userdata('c_phone'));
+            mim_sms($txt, $this->session->userdata('c_phone'));
             //send sms
             sendEmail($txt, $this->session->userdata('c_email'), '', 1);
 

@@ -216,7 +216,7 @@ $frontend_offer_banner_url = $getSiteSetting->frontend_offer_banner_url ?? null;
     $jewellery_products = array_key_exists('products', $category_jewellery) ? $category_jewellery['products'] : [];
     if (count($jewellery_products)) :
   ?>
-      <div class="section small_pt small_pb">
+      <!-- <div class="section small_pt small_pb">
         <div class="custom-container">
           <div class="row">
             <div class="col-xl-3 d-none d-xl-block">
@@ -252,7 +252,7 @@ $frontend_offer_banner_url = $getSiteSetting->frontend_offer_banner_url ?? null;
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     <?php endif; ?>
   <?php endif; ?>
   <!-- End Jewellery -->

@@ -24,7 +24,7 @@ $pages = get_pages();
         </div>
         <div class="col-sm">
           <div class="widget">
-            <h6 class="widget_title">About Shatkahonbd</h6>
+            <h6 class="widget_title">About Mix Fashion House</h6>
             <ul class="widget_links pl-0">
               <?php
               foreach ($pages as $value) :
@@ -59,9 +59,9 @@ $pages = get_pages();
           <div class="widget">
             <h6 class="widget_title">Follow us</h6>
             <ul class="widget_links pl-0 social_design">
-              <li><a href="https://www.facebook.com/ShatkahonSharee" target="_blank"><i class="icon-facebook-rect"></i> Facebook</a></li>
-              <li><a href="https://www.instagram.com/ShatkahonSharee" target="_blank"><i class="icon-instagram-1"></i> Instagram</a></li>
-              <li><a href=" #" target="_blank"><i class="icon-twitter"></i> Twitter</a></li>
+              <li><a href="#" target="_blank"><i class="icon-facebook-rect"></i> Facebook</a></li>
+              <li><a href="#" target="_blank"><i class="icon-instagram-1"></i> Instagram</a></li>
+              <li><a href="#" target="_blank"><i class="icon-twitter"></i> Twitter</a></li>
               <li><a href="#" target="_blank"><i class="icon-youtube-play"></i> Youtube</a></li>
             </ul>
           </div>
@@ -84,9 +84,9 @@ $pages = get_pages();
       <hr style="border-color: #000;">
 
       <!-- Start SECTION Payment -->
-      <div class="position-relative">
+      <!-- <div class="position-relative">
         <img src="<?= site_url("assets/frontend/images/ssl.png") ?>" class="img-fluid" alt="logo" />
-      </div>
+      </div> -->
       <!-- END SECTION Payment -->
 
       <hr style="border-color: #000;">
@@ -97,7 +97,7 @@ $pages = get_pages();
     <div class="custom-container">
       <div class="row align-items-right">
         <div class="col-lg-12">
-          <p class="mb-lg-0 text-center text-white">copyright &copy; <?= date('Y') ?> Shatkahon. All Rights Reserved by Shatkhahon.</p>
+          <p class="mb-lg-0 text-center text-white">Copyright &copy; <?= date('Y') ?> Mix Fashion. All Rights Reserved by Mix Fashion. Developed By <a href="https://avanteca.com.bd">Avanteca Limited</a></p>
         </div>
       </div>
     </div>

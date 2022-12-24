@@ -9,6 +9,7 @@
  */
 defined('BASEPATH') or exit('No direct script access allowed');
 
+
 const ISMS_TOKEN = "Shatkahonbd-7b47dea1-9b94-4b0c-80ab-31b6f8d3db08";
 const ISMS_SID = "SHATKAHONBRAND"; // put ssl provided sid here
 const ISMS_DOMAIN = "https://smsplus.sslwireless.com"; //api domain // example http://smsplus.sslwireless.com

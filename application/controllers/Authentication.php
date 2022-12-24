@@ -258,9 +258,9 @@ class Authentication extends Cl_Controller
           //send sms
           $smsSetting = getSMSSetting();
           if ($smsSetting->enable_status == 1) {
-            $status = sendSSL_WareSMS($txt, $this->session->userdata('phone'));
+            $status = mim_sms($txt, $this->session->userdata('phone'));
           } elseif ($smsSetting->enable_status == 2) {
-            $status = sendSSL_WareSMS($txt, $this->session->userdata('phone'));
+            $status = mim_sms($txt, $this->session->userdata('phone'));
           }
 
 
@@ -362,9 +362,9 @@ class Authentication extends Cl_Controller
           //send sms
           $smsSetting = getSMSSetting();
           if ($smsSetting->enable_status == 1) {
-            $status = sendSSL_WareSMS($txt, $user_details->phone);
+            $status = mim_sms($txt, $user_details->phone);
           } elseif ($smsSetting->enable_status == 2) {
-            $status = sendSSL_WareSMS($txt, $user_details->phone);
+            $status = mim_sms($txt, $user_details->phone);
           }
         }
 

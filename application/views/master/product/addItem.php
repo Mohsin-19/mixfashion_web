@@ -599,6 +599,9 @@
                       <input type="number" name="attribute[0][price]" class="price form-control" min="0">
                     </td>
                     <td class="text-center">
+                      <input type="number" name="attribute[0][qty]" class="qty form-control" min="0">
+                    </td>
+                    <td class="text-center">
                       <button type="button" class="btn btn-sm btn-danger remveItemAttr">Remove</button>
                     </td>
                   </tr>

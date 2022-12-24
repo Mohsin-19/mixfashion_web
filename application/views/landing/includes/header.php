@@ -62,7 +62,7 @@ $paymentSetting = paymentSetting();
             <?php if (isset($getSiteSetting->phone) && $getSiteSetting->phone) : ?>
               <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                 <ul class="contact_detail text-center pl-4 text-lg-left">
-                <a href="tel:<?= $getSiteSetting->phone ?>"><i class="icon-whatsapp" style="color:#000;"></i></a>
+                <a href="tel:<?= $getSiteSetting->phone ?>"><i class="icon-phone" style="color:#000;"></i></a>
                   <!-- <li><a href="tel:<?= $getSiteSetting->phone ?>"><span><?= $getSiteSetting->phone ?></span></a></li> -->
                 </ul>
               </div>
@@ -124,7 +124,7 @@ $paymentSetting = paymentSetting();
     </div>
   </div>
 
-  <div class="bottom_header dark_skin main_menu_uppercase border-top d-none d-md-block" style="background-color: #000;">
+  <div class="bottom_header dark_skin main_menu_uppercase border-top d-none d-md-block" style="background-color: red;">
     <div class="container">
       <div class="row align-items-center align-content-center">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -135,7 +135,7 @@ $paymentSetting = paymentSetting();
                   <a class="nav-link nav_item" href="<?= base_url('/') ?>">Home</a>
                 </li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">Latest</a>
+                  <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">All Categoorys</a>
                   <div class="dropdown-menu">
                     <ul class="pl-0">
                       <?php foreach ($all_categories as $key => $value) : ?>
@@ -148,7 +148,7 @@ $paymentSetting = paymentSetting();
                     </ul>
                   </div>
                 </li>
-                <?php foreach ($all_categories as $key => $value) : ?>
+                <!-- <?php foreach ($all_categories as $key => $value) : ?>
                   <?php
                   if (isset($value->subcategories) && $value->subcategories) :
                   ?>
@@ -169,7 +169,7 @@ $paymentSetting = paymentSetting();
                   <?php
                   endif;
                   ?>
-                <?php endforeach; ?>
+                <?php endforeach; ?> -->
 
                 <li><a class="nav-link nav_item" href="contact-us">Contact Us</a></li>
               </ul>

@@ -149,6 +149,7 @@ function checkout_items(index, item, cart_price, row_total) {
   let name = item.hasOwnProperty("name") ? item.name : "";
   let color_name = item?.color_name || null;
   let size_name = item?.size_name || null;
+  let attr_qty = item?.attr_qty || null;
   let delivery_charge = item.hasOwnProperty("actual_del_charge")
     ? item.actual_del_charge
     : 0;
@@ -168,11 +169,11 @@ function checkout_items(index, item, cart_price, row_total) {
     <td class="text-center">
       <div class="input-group input-group-sm plus-minus-group mx-auto">
         <div class="input-group-prepend">
-          <button type="button" data-id="${id}" class="btn btn_m "><i class="icon-minus"></i></button>
+          <button type="button" data-id="${id}" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" class="btn btn_m "><i class="icon-minus"></i></button>
         </div>
         <input type="text" value="${cart_qty}" class="form-control text-center" readonly="readonly">
         <div class="input-group-append">
-          <button type="button" data-id="${id}" class="btn btn_p "><i class="icon-plus"></i></button>
+          <button type="button" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" data-id="${id}" class="btn btn_p "><i class="icon-plus"></i></button>
         </div>
       </div>
     </td>
@@ -205,6 +206,8 @@ function renderCart() {
     var size_id = item.size_id;
     var row_tax = item.tax_percentage;
     var cart_qty = item.quantity;
+    var attr_qty = item.attr_qty;
+
     var category_id = item.hasOwnProperty("category_id") ? item.category_id : 0;
     var subcategory_id = item.hasOwnProperty("subcategory_id")
       ? item.subcategory_id
@@ -260,10 +263,12 @@ function renderCart() {
                   <a href="/remove" class="item_remove removeItem" data-id="${id}"><i class="ion-close"></i></a>
                   <a href="/product/${id}"><img src="${
       item.image
-    }" alt="cart_thumb2">${item.name}</a>
-                  <span class="cart_quantity"> ${cart_qty} x <span class="cart_amount"></span> ${numberWithCommas(
+    }" alt="cart_thumb2">${
+      item.name
+    }</a><span class="cart_quantity" data-value="${cart_qty}"> ${cart_qty} x <span class="cart_amount"></span> ${numberWithCommas(
       cart_price
     )}</span>
+                    <input class="qty" type="hidden" value="${attr_qty}">
                 </li>`;
   });
 
@@ -337,8 +342,18 @@ $(document)
   })
   .on("click", ".btn_p, .btnCart", function () {
     var activeAttribute = dom.find("input[name=activeAttribute]:checked");
-    var inputQty = $(".qty").val();
-    var productQty = activeAttribute.attr("data-qty");
+    var inputQty = 0;
+    var productQty = 0;
+    var plusBtn = $(this);
+
+    if (activeAttribute.length) {
+      inputQty = $("#pro_qty").val();
+      productQty = activeAttribute.attr("data-qty");
+      plusBtn = $(".btn_p");
+    } else {
+      inputQty = $(this).attr("data-cart-qty");
+      productQty = $(this).attr("data-qty");
+    }
 
     if (parseInt(productQty) > parseInt(inputQty)) {
       var product_id = $(this).attr("data-id");
@@ -350,11 +365,12 @@ $(document)
         if (activeAttribute.length) {
           var attribute_price = activeAttribute.attr("data-price");
           attribute_price = attribute_price ? Number(attribute_price) : 0;
-
           product.color_id = activeAttribute.attr("data-color-id");
           product.color_name = activeAttribute.attr("data-color-name");
           product.size_id = activeAttribute.attr("data-size-id");
           product.size_name = activeAttribute.attr("data-size-name");
+          product.attr_qty = productQty;
+
           if (attribute_price) {
             product.price = attribute_price;
           }
@@ -370,18 +386,17 @@ $(document)
             );
           }, 3000);
         }
-        //  console.log(product);
         Cart.add(product, 1);
       }
     } else {
-      $(".btn_p").prop("disabled", true);
+      plusBtn.prop("disabled", true);
     }
   })
+
   .on("change", "input[name=activeAttribute]", function () {
     var thisItem = $(this);
     var qty = thisItem.attr("data-qty");
-    var inputQty = $(".qty_3").val();
-
+    console.log(qty, inputQty);
     if (qty >= inputQty) {
       $(".btn_p").prop("disabled", false);
       var item_id = parseInt(thisItem.val());
@@ -406,7 +421,15 @@ $(document)
     }
   })
   .on("click", ".btn_m", function () {
-    $(".btn_p").prop("disabled", false);
+    var plusBtn = $(this);
+    var inputQty = $(this).attr("data-cart-qty");
+
+    if (inputQty) {
+      plusBtn.closest(".btn_p").prop("disabled", false);
+    } else {
+      $(".btn_p").prop("disabled", false);
+    }
+
     var product_id = $(this).attr("data-id");
     var id = parseInt(product_id);
     if (Cart.exists(id)) {

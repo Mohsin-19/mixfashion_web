@@ -310,6 +310,7 @@ class Ajax extends Cl_Controller
     } else if ($getOrderDetails->status == "Return") {
       $s_value = 6;
     }
+    
     $s_value_1 = 0;
     if ($status == "New") {
       $s_value_1 = 1;

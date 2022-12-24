@@ -203,31 +203,33 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
               </div>
 
               <?php
+              $attr = get_product_attributes($product->id);
+              $order_attr = get_product_ordered_attributes($product->id);
 
-              // $order_attr = get_product_ordered_attributes($product->id);
-              // $count = count($order_attr);
-              // $result = [];
 
-              // foreach ($attrData as $key => $value) {
-              //   if ($count > $key) {
-              //     if ($value['color_id'] == $order_attr[$key]['color_id'] || $value['size_id'] == $order_attr[$key]['size_id']) {
-              //       $result[] = array_unique(array_merge($value, $order_attr[$key]));
-              //     } else {
-              //       $result[] = $value;
-              //     }
-              //   } else {
-              //     $result[] = $value;
-              //   }
-              // }
+              $count = count($order_attr);
+              $result = [];
+
+              foreach ($attr as $key => $value) {
+                if ($count > $key) {
+                  if ($value['color_id'] == $order_attr[$key]['color_id'] || $value['size_id'] == $order_attr[$key]['size_id']) {
+                    $result[] = array_unique(array_merge($value, $order_attr[$key]));
+                  } else {
+                    $result[] = $value;
+                  }
+                } else {
+                  $result[] = $value;
+                }
+              }
 
               ?>
 
-              <?php if (!empty($attrData)) : ?>
+              <?php if (!empty($result)) : ?>
                 <div class="pr_switch_wrap">
                   <table class="table attrTable table-sm table-bordered text-center " style="max-width: 350px;">
                     <tbody>
                       <?php
-                      foreach ($attrData as $key => $attrItem) :
+                      foreach ($result as $key => $attrItem) :
                         $color_id = $attrItem['color_id'] ?? 0;
                         $color_name = $attrItem['color_name'] ?? "";
                         $size_id = $attrItem['size_id'] ?? 0;

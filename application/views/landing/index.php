@@ -257,7 +257,7 @@ $frontend_offer_banner_url = $getSiteSetting->frontend_offer_banner_url ?? null;
   <?php endif; ?>
   <!-- End Jewellery -->
 
-  <? php //$this->load->view('landing/includes/sectionStories');
+  <?php //$this->load->view('landing/includes/sectionStories');
   ?>
 
 </div>

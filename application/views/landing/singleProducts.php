@@ -206,14 +206,14 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
               $attr = get_product_attributes($product->id);
               $order_attr = get_product_ordered_attributes($product->id);
 
-
               $count = count($order_attr);
               $result = [];
 
               foreach ($attr as $key => $value) {
                 if ($count > $key) {
-                  if ($value['color_id'] == $order_attr[$key]['color_id'] || $value['size_id'] == $order_attr[$key]['size_id']) {
-                    $result[] = array_unique(array_merge($value, $order_attr[$key]));
+                  if ($value['color_id'] == $order_attr[$key]['color_id'] && $value['size_id'] == $order_attr[$key]['size_id']) {
+                    $result[] = array_merge($value, $order_attr[$key]);
+                    $result[$key]['product_qty'] = $result[$key]['product_qty'] >  $result[$key]['sum_qty'] ? $result[$key]['product_qty'] - $result[$key]['sum_qty'] : 0;
                   } else {
                     $result[] = $value;
                   }

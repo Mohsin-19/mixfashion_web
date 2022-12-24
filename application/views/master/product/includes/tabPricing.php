@@ -218,7 +218,6 @@
               $result[] = $value;
             }
           }
-          // dd($result);
           ?>
 
           <?php if (count($result) > 0) : ?>

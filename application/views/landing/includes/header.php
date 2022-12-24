@@ -18,7 +18,6 @@ $paymentSetting = paymentSetting();
 
 ?>
 
-
 <!-- START HEADER -->
 <header class="header_wrap fixed-top header_with_topbar">
   <div class="top-header d-none d-md-block">
@@ -62,7 +61,7 @@ $paymentSetting = paymentSetting();
             <?php if (isset($getSiteSetting->phone) && $getSiteSetting->phone) : ?>
               <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                 <ul class="contact_detail text-center pl-4 text-lg-left">
-                <a href="tel:<?= $getSiteSetting->phone ?>"><i class="icon-phone" style="color:#000;"></i></a>
+                  <a href="tel:<?= $getSiteSetting->phone ?>"><i class="icon-phone" style="color:#000;"></i></a>
                   <!-- <li><a href="tel:<?= $getSiteSetting->phone ?>"><span><?= $getSiteSetting->phone ?></span></a></li> -->
                 </ul>
               </div>
@@ -150,7 +149,7 @@ $paymentSetting = paymentSetting();
                 </li>
                 <!-- <?php foreach ($all_categories as $key => $value) : ?>
                   <?php
-                  if (isset($value->subcategories) && $value->subcategories) :
+                        if (isset($value->subcategories) && $value->subcategories) :
                   ?>
                     <li class="dropdown">
                       <a class="dropdown-toggle nav-link" href="<?= base_url($value->slug) ?>" data-toggle="dropdown"><?php echo (ucfirst($value->name)) ?></a>
@@ -163,11 +162,11 @@ $paymentSetting = paymentSetting();
                       </div>
                     </li>
                   <?php
-                  else :
+                        else :
                   ?>
                     <li><a class="nav-link nav_item" href="<?= base_url($value->slug) ?>"><?= (ucfirst($value->name)) ?></a></li>
                   <?php
-                  endif;
+                        endif;
                   ?>
                 <?php endforeach; ?> -->
 

@@ -147,11 +147,7 @@ $frontend_offer_banner_url = $getSiteSetting->frontend_offer_banner_url ?? null;
             <div class="row">
               <div class="col-12">
                 <div class="product_slider carousel_slider owl-carousel owl-theme nav_style5  py-3" data-loop="false" data-dots="false" data-nav="true" data-margin="15" data-responsive='{"0":{"items": "2"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
-
-
                   <?php $this->load->view('landing/ajax/products', ['products' => $men_products, 'landing' => true]); ?>
-
-
                 </div>
               </div>
             </div>

@@ -337,7 +337,7 @@ $(document)
   })
   .on("click", ".btn_p, .btnCart", function () {
     var activeAttribute = dom.find("input[name=activeAttribute]:checked");
-    var inputQty = $(".qty_3").val();
+    var inputQty = $(".qty").val();
     var productQty = activeAttribute.attr("data-qty");
 
     if (parseInt(productQty) > parseInt(inputQty)) {

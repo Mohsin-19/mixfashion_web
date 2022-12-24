@@ -166,14 +166,17 @@ $frontend_offer_banner_url = $getSiteSetting->frontend_offer_banner_url ?? null;
     $women_products = is_array($category_women) ? $category_women : [];
     $women_cat = array_key_exists('category', $category_women) ? $category_women['category'] : [];
     $women_products = array_key_exists('products', $category_women) ? $category_women['products'] : [];
+    $buttom_left_banner = $women_cat ? $women_cat->bottom_left_banner : null;
+    $women_cat_name = $women_cat ? $women_cat->name : null;
+    $women_cat_slug = $women_cat ? $women_cat->slug : null;
   ?>
     <div class="section small_pt ">
       <div class="custom-container">
         <div class="row">
           <div class="col-xl-3 d-none d-xl-block">
             <div class="sale-banner">
-              <a class="hover_effect1" href="<?= site_url($women_cat->slug) ?>">
-                <img src="<?= base_url("images/{$women_cat->bottom_left_banner}") ?>" alt="<?= $women_cat->name ?>">
+              <a class="hover_effect1" href="<?= site_url($women_cat_slug) ?>">
+                <img src="<?= base_url("images/{$buttom_left_banner}") ?>" alt="<?= $women_cat_name ?>">
               </a>
             </div>
           </div>
@@ -182,10 +185,10 @@ $frontend_offer_banner_url = $getSiteSetting->frontend_offer_banner_url ?? null;
               <div class="col-12">
                 <div class="heading_tab_header">
                   <div class="heading_s2">
-                    <h1><?= $women_cat->name ?></h1>
+                    <h1><?= $women_cat_name ?></h1>
                   </div>
                   <div class="view_all">
-                    <a href="<?= site_url($women_cat->slug) ?>" class="text_default"><i class="linearicons-power"></i>
+                    <a href="<?= site_url($women_cat_slug) ?>" class="text_default"><i class="linearicons-power"></i>
                       <span>View All</span></a>
                   </div>
                 </div>
@@ -194,11 +197,7 @@ $frontend_offer_banner_url = $getSiteSetting->frontend_offer_banner_url ?? null;
             <div class="row">
               <div class="col-12">
                 <div class="product_slider carousel_slider owl-carousel owl-theme nav_style5  py-3" data-loop="false" data-dots="false" data-nav="true" data-margin="15" data-responsive='{"0":{"items": "2"}, "481":{"items": "2"}, "768":{"items": "3"}, "991":{"items": "4"}}'>
-
-
                   <?php $this->load->view('landing/ajax/products', ['products' => $women_products, 'landing' => true]); ?>
-
-
                 </div>
               </div>
             </div>

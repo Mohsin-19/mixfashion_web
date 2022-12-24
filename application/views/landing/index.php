@@ -139,7 +139,7 @@ $frontend_offer_banner_url = $getSiteSetting->frontend_offer_banner_url ?? null;
                   </div>
                   <div class="view_all">
                     <a href="<?= site_url($men_cat->slug) ?>" class="text_default"><i class="linearicons-power"></i>
-                      <span>View All</span></a>
+                      <span>View all</span></a>
                   </div>
                 </div>
               </div>
@@ -257,20 +257,6 @@ $frontend_offer_banner_url = $getSiteSetting->frontend_offer_banner_url ?? null;
   <?php endif; ?>
   <!-- End Jewellery -->
 
-
-
-
-
-  <?php
-
-  //$this->load->view('landing/includes/sectionStories');
-
-  ?>
-
-
-
-
-
-
+  <?php//$this->load->view('landing/includes/sectionStories');?>
 
 </div>

@@ -52,16 +52,16 @@ $paymentSetting = paymentSetting();
           </div>
         </div>
       </div>
-      <!--<div class="col-lg-3 col-sm-4 col-6">-->
-      <!--  <div class="icon_box icon_box_style4 payment_click  mb-3 mb-md-0" data-id="6">-->
-      <!--    <div class="icon">-->
-      <!--      <img src="<?= base_url("assets/landing/img/sslcommerz.png") ?>" style="height: 35px;">-->
-      <!--    </div>-->
-      <!--    <div class="icon_box_content">-->
-      <!--      <h6><?= lang('SSLCOMMERZ'); ?></h6>-->
-      <!--    </div>-->
-      <!--  </div>-->
-      <!--</div>-->
+      <!-- <div class="col-lg-3 col-sm-4 col-6">
+        <div class="icon_box icon_box_style4 payment_click  mb-3 mb-md-0" data-id="6">
+          <div class="icon">
+            <img src="<?= base_url("assets/landing/img/sslcommerz.png") ?>" style="height: 35px;">
+          </div>
+          <div class="icon_box_content">
+            <h6><?= lang('SSLCOMMERZ'); ?></h6>
+          </div>
+        </div>
+      </div> -->
     </div>
 
     <div class="row justify-content-center">

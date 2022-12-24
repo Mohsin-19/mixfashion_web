@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @product: Grocery Web apps
  * @author : Avanteca Web, Software & Apps Solution
@@ -6,7 +7,7 @@
  * @copyright Reserved by Avanteca Web, Software & Apps Solution
  * @website http://avanteca.com.bd/
  */
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Ajax extends Cl_Controller
 {
@@ -27,7 +28,6 @@ class Ajax extends Cl_Controller
     if (!$this->session->has_userdata('user_id')) {
       redirect('Authentication/index');
     }
-
   }
 
   /**
@@ -162,7 +162,6 @@ class Ajax extends Cl_Controller
     }
 
     echo json_encode($output);
-
   }
 
   /**
@@ -263,7 +262,6 @@ class Ajax extends Cl_Controller
     $this->session->set_userdata($outlet_session);
 
     echo json_encode("Success");
-
   }
 
   /**
@@ -312,6 +310,7 @@ class Ajax extends Cl_Controller
     } else if ($getOrderDetails->status == "Return") {
       $s_value = 6;
     }
+    
     $s_value_1 = 0;
     if ($status == "New") {
       $s_value_1 = 1;
@@ -356,7 +355,6 @@ class Ajax extends Cl_Controller
         $txt = "Order has been in progress. Order Number is: " . $getOrderDetails->order_number . " Customer Name: " . $getOrderDetails->customer_name . " Customer Phone No: " . $getOrderDetails->phone;
         smsSend($txt, $getOrderDetails->phone, 3);
         sendEmail($txt, $getOrderDetails->email, '', 3);
-
       } elseif ($status == "Delivered") {
         check_permission('complete_order');
         $data = [];
@@ -372,7 +370,6 @@ class Ajax extends Cl_Controller
         //send email
         smsSend($txt, $getOrderDetails->phone, 4);
         sendEmail($txt, $getOrderDetails->email, '', 4);
-
       } elseif ($status == "Dispatch") {
         check_permission('dispatch_order');
         $data = [];
@@ -381,7 +378,6 @@ class Ajax extends Cl_Controller
         $data = [];
         $data['order_status'] = $status;
         $this->Common_model->updateInformationByCustom($data, $id, "order_id", "tbl_order_items");
-
       } elseif ($status == "Return") {
         check_permission('return_order');
         $data = [];

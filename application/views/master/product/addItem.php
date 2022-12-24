@@ -558,8 +558,6 @@
                     <td class="c_txt_right"> %</td>
                   </tr>
                 </table>
-
-
               </div>
             </div>
           <?php } ?>
@@ -574,6 +572,7 @@
                     <th class="text-center" style="width: 20%;">Color</th>
                     <th class="text-center" style="width: 20%;">Size</th>
                     <th class="text-center" style="width: 20%;">Price</th>
+                    <th class="text-center" style="width: 20%;">Qty</th>
                     <th class="text-center" style="width: 20%;">Option</th>
                   </tr>
                 </thead>

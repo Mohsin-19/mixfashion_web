@@ -1,8 +1,7 @@
-
 <section class="content-header">
     <h1>
-       <?php echo lang('product_details'); ?>
-    </h1>  
+        <?php echo lang('product_details'); ?>
+    </h1>
 </section>
 
 <section class="content">
@@ -35,19 +34,19 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h3><?php echo lang('sale_price'); ?></h3>
-                                <p class=""> <?php echo escape_output($this->session->userdata('currency')); ?>  <?php echo escape_output($product_details->sale_price); ?></p>
+                                <p class=""> <?php echo escape_output($this->session->userdata('currency')); ?> <?php echo escape_output($product_details->sale_price); ?></p>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h3><?php echo lang('purchase_price'); ?></h3>
-                                <p class=""> <?php echo escape_output($this->session->userdata('currency')); ?>  <?php echo escape_output($product_details->purchase_price); ?></p>
+                                <p class=""> <?php echo escape_output($this->session->userdata('currency')); ?> <?php echo escape_output($product_details->purchase_price); ?></p>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h3><?php echo lang('opening_stock'); ?></h3>
-                                <p class="">  <?php echo escape_output($product_details->opening_stock); ?></p>
+                                <p class=""> <?php echo escape_output($product_details->opening_stock); ?></p>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -117,7 +116,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h3><?php echo lang('discount_price'); ?></h3>
-                                <p class=""><?php echo escape_output($this->session->userdata('currency')); ?>  <?php echo escape_output($product_details->discount_price); ?></p>
+                                <p class=""><?php echo escape_output($this->session->userdata('currency')); ?> <?php echo escape_output($product_details->discount_price); ?></p>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -126,7 +125,7 @@
                                 <p class=""><?php echo escape_output($product_details->has_offer); ?></p>
                             </div>
                         </div>
-                        <div class="col-md-3" style="display: <?php echo isset($product_details->has_offer) && $product_details->has_offer=="Yes"?'':'none'?>">
+                        <div class="col-md-3" style="display: <?php echo isset($product_details->has_offer) && $product_details->has_offer == "Yes" ? '' : 'none' ?>">
                             <div class="form-group">
                                 <h3><?php echo lang('offer'); ?></h3>
                                 <p class=""><?php echo escape_output($product_details->offer); ?></p>
@@ -145,7 +144,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <h3><?php echo lang('photo'); ?></h3>
-                                <?php if(!empty($product_details->photo)){?>
+                                <?php if (!empty($product_details->photo)) { ?>
                                     <img class="img-responsive txt-uh-58" src="<?php echo base_url() . "images/" . $product_details->photo ?>" alt="Photo">
                                 <?php } ?>
                             </div>
@@ -153,34 +152,34 @@
                     </div>
                     <div class="clearfix"></div>
                     <?php $collect_tax = $this->session->userdata('collect_tax'); ?>
-                    <div class="row" style="display: <?php echo isset($collect_tax) && $collect_tax=="Yes"?'block':'none'?>">
+                    <div class="row" style="display: <?php echo isset($collect_tax) && $collect_tax == "Yes" ? 'block' : 'none' ?>">
                         <?php
                         $tax_information = json_decode($product_details->tax_information);
                         ?>
-                        <?php foreach($tax_fields as $tax_field){ ?>
+                        <?php foreach ($tax_fields as $tax_field) { ?>
 
-                                    <?php
-                                    if(count($tax_information)>0){
-                                        foreach($tax_information as $single_tax){
-                                            // echo escape_output($tax_field->id) ." ". $single_tax->tax_field_id."<br/>";
-                                            if($tax_field->id == $single_tax->tax_field_id){
+                            <?php
+                            if (count($tax_information) > 0) {
+                                foreach ($tax_information as $single_tax) {
+                                    // echo escape_output($tax_field->id) ." ". $single_tax->tax_field_id."<br/>";
+                                    if ($tax_field->id == $single_tax->tax_field_id) {
 
-                                                ?>
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <h3><?php echo escape_output($tax_field->tax); ?></h3>
-                                                        <p class=""><?php echo escape_output($single_tax->tax_field_percentage); ?>%</p>
-                                                    </div>
-                                                </div>
-                                            <?php   }
-                                        }
-                                    }else{
+                            ?>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <h3><?php echo escape_output($tax_field->tax); ?></h3>
+                                                <p class=""><?php echo escape_output($single_tax->tax_field_percentage); ?>%</p>
+                                            </div>
+                                        </div>
+                                <?php   }
+                                }
+                            } else {
 
-                                        ?>
+                                ?>
 
-                                        <?php
-                                    }
-                                    ?>
+                            <?php
+                            }
+                            ?>
 
                         <?php } ?>
                     </div>
@@ -188,12 +187,12 @@
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                    <a href="<?php echo base_url() ?>Item/addEditItem/<?php echo escape_output($encrypted_id); ?>"><button type="button" class="btn btn-primary"><?php echo lang('edit'); ?></button></a>
-                    <a href="<?php echo base_url() ?>Item/products"><button type="button" class="btn btn-primary"><?php echo lang('back'); ?></button></a>
+                        <a href="<?php echo base_url() ?>Item/addEditItem/<?php echo escape_output($encrypted_id); ?>"><button type="button" class="btn btn-primary"><?php echo lang('edit'); ?></button></a>
+                        <a href="<?php echo base_url() ?>Item/products"><button type="button" class="btn btn-primary"><?php echo lang('back'); ?></button></a>
                     </div>
                     <?php echo form_close(); ?>
                 </div>
             </div>
         </div>
     </div>
-</section> 
+</section>

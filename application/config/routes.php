@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
 $route['default_controller'] = 'Landing';
-
 $route['404_override'] = 'Landing/ErrorPage'; // 404 error page
 
 $route['logout'] = 'Landing/logout';
@@ -15,6 +14,7 @@ $route['signup'] = 'Landing/signup';
 $route['authentication'] = 'Authentication';
 $route['payment'] = 'PaymentController/payment';
 $route['sslcommerzPayment'] = 'PaymentController/sslcommerzPayment';
+
 $route['googleLogin'] = 'Authentication/googleLogin';
 $route['facebookLogin'] = 'Authentication/facebookLogin';
 $route['stripePayment'] = 'PaymentController/stripePayment';
@@ -93,7 +93,6 @@ $route['admin/permission']['post'] = 'AccessController/PermissionController/stor
 $route['admin/permission/(:num)/edit'] = 'AccessController/PermissionController/edit/$1';
 $route['admin/permission/(:num)/update']['post'] = 'AccessController/PermissionController/update/$1';
 $route['admin/permission/(:num)/delete'] = 'AccessController/PermissionController/delete/$1';
-
 
 
 //admin ajax model controller

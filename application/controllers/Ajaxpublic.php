@@ -360,7 +360,7 @@ class Ajaxpublic extends Cl_Controller
         $this->Common_model->insertInformation($data, "tbl_notifications");
 
         if ($phone) {
-          $status = mim_sms($txt, $phone);
+          $status = sendSSL_WareSMS($txt, $phone);
         }
 
         if ($email) {

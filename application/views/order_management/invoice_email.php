@@ -668,7 +668,7 @@
         </main>
 
         <footer>
-          &copy; All rights are reserved by <a href="https://shatkahonbd.com/">Shatkahonbd.com</a>
+          &copy; All rights are reserved by <a href="http://mixfashionhouse.com/">mixfashionhouse.com</a>
         </footer>
       </div>
       <!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->

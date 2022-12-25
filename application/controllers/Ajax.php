@@ -260,7 +260,6 @@ class Ajax extends Cl_Controller
     $outlet_session['sms_setting_check'] = $this->input->get($this->security->xss_clean('sms_setting_check'));
     $outlet_session['qty_setting_check'] = $this->input->get($this->security->xss_clean('qty_setting_check'));
     $this->session->set_userdata($outlet_session);
-
     echo json_encode("Success");
   }
 
@@ -310,7 +309,7 @@ class Ajax extends Cl_Controller
     } else if ($getOrderDetails->status == "Return") {
       $s_value = 6;
     }
-    
+
     $s_value_1 = 0;
     if ($status == "New") {
       $s_value_1 = 1;
@@ -345,6 +344,7 @@ class Ajax extends Cl_Controller
         smsSend($txt, $getOrderDetails->phone, 2);
         sendEmail($txt, $getOrderDetails->email, '', 2);
       } elseif ($status == "In Progress") {
+        $this->update_order_pro_atr($id, "minus");
         check_permission('process_order');
         $data = [];
         $data['status'] = $status;
@@ -383,6 +383,7 @@ class Ajax extends Cl_Controller
         $data = [];
         $data['status'] = $status;
         $this->update_order_information($data, $id);
+        $this->update_order_pro_atr($id, "plus");
         $data = [];
         $data['order_status'] = $status;
         $this->Common_model->updateInformationByCustom($data, $id, "order_id", "tbl_order_items");
@@ -398,6 +399,11 @@ class Ajax extends Cl_Controller
   function update_order_information($data, $id)
   {
     $this->Common_model->updateInformation($data, $id, "tbl_orders");
+  }
+
+  function update_order_pro_atr($id, $type)
+  {
+    $this->Common_model->updateOrderItemInformation($id, "tbl_attributes", $type);
   }
 
   /**

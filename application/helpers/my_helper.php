@@ -2012,10 +2012,10 @@ if (!function_exists('get_product_attributes')) {
 
 
 if (!function_exists('get_product_ordered_attributes')) {
-  function get_product_ordered_attributes($product_id)
+  function get_product_ordered_attributes($order_id)
   {
     $CI = &get_instance();
-    $ig_information = $CI->db->query("SELECT `color_id`, `size_id`, `product_id`, `order_status`, SUM(`qty`) AS `sum_qty` FROM `tbl_order_items` WHERE `product_id`='$product_id' And `order_status` NOT IN (1, 'c') group by `size_id`,`color_id`")->result_array();
+    $ig_information = $CI->db->query("SELECT `color_id`, `size_id`, `product_id`, `qty` FROM `tbl_order_items` WHERE `order_id`='$order_id' AND `order_status` NOT IN ('In Progress') group by `size_id`,`color_id`")->result_array();
     return $ig_information ? json_decode(json_encode($ig_information), true) : [];
   }
 }

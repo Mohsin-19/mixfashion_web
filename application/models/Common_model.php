@@ -852,6 +852,31 @@ WHERE i.del_status='Live' AND i.available='Yes' AND {$condition} GROUP BY i.id "
     $this->db->update($table_name, $data);
   }
 
+  public function updateOrderItemInformation($id, $table_name, $type)
+  {
+    $order_attr = get_product_ordered_attributes($id);
+    if (count($order_attr) > 0) {
+      foreach ($order_attr as $value) {
+        $product_id = $value['product_id'];
+        $color_id = $value['color_id'];
+        $size_id = $value['size_id'];
+        $product_qty = $this->db->query("SELECT product_qty FROM $table_name WHERE product_id = '$product_id' AND color_id = $color_id AND size_id = $size_id ")->row('product_qty');
+        if ($product_qty) {
+          if ($type == "plus") {
+            $new_qty = $product_qty + $value['qty'];
+          }
+          if ($type == "minus") {
+            $new_qty = $product_qty > $value['qty'] ? $product_qty - $value['qty'] : 0;
+          }
+          $this->db->where('product_id', $value['product_id']);
+          $this->db->where('color_id', $value['color_id']);
+          $this->db->where('size_id', $value['size_id']);
+          $this->db->update($table_name, ['product_qty' => $new_qty]);
+        }
+      }
+    }
+  }
+
   /**
    * update custom table data
    * @access public

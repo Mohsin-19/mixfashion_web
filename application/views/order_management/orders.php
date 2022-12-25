@@ -280,6 +280,7 @@ if (isset($getSiteSetting->currency) && $getSiteSetting->currency) {
           <div class="col-md-12">
             <div class="form-group">
               <label><?php echo lang('status'); ?></label>
+
               <select class="form-control" name="status_f" id="status_f">
                 <?php if (has_permission('new_order')) : ?>
                   <option value="New"><?php echo lang('New'); ?></option>

@@ -244,11 +244,11 @@ function renderCart() {
       checkoutItems += checkout_items(index, item, cart_price, row_total);
     } else if (single_page === "payment") {
       let block_cats = [47, 49, 50];
-      if (block_cats.includes(category_id)) {
-        $(".cashOnDelivery").attr("disabled", "disabled");
-        $(".cashOnDelivery").attr("title", "Cash on delivery not allowed");
-        $(".cashOnDelivery").addClass("disabled");
-      }
+      // if (block_cats.includes(category_id)) {
+      //   $(".cashOnDelivery").attr("disabled", "disabled");
+      //   $(".cashOnDelivery").attr("title", "Cash on delivery not allowed");
+      //   $(".cashOnDelivery").addClass("disabled");
+      // }
     } else if (single_page === "product") {
       // start single page
       $("#amount_" + id).text(numberWithCommas(cart_price));
@@ -604,16 +604,15 @@ $(document)
   .on("click", ".payment_click", function (e) {
     e.preventDefault();
     var payment_click = $(".payment_click");
-    // var disabled = $(this).attr("disabled");
-    // if (disabled) {
-    //   swal_alert_sad("", "This payment is allowed for COD");
-    // } else {
-    // }
-
-    payment_click.removeClass("active");
-    $(this).addClass("active");
-    var this_id = $(this).attr("data-id");
-    $("#hidden_payment_status").val(this_id);
+    var disabled = $(this).attr("disabled");
+    if (disabled) {
+      swal_alert_sad("", "This payment is allowed for COD");
+    } else {
+      payment_click.removeClass("active");
+      $(this).addClass("active");
+      var this_id = $(this).attr("data-id");
+      $("#hidden_payment_status").val(this_id);
+    }
   });
 
 $(document)

@@ -360,7 +360,8 @@ class Ajaxpublic extends Cl_Controller
         $this->Common_model->insertInformation($data, "tbl_notifications");
 
         if ($phone) {
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
 
         if ($email) {
@@ -608,7 +609,6 @@ class Ajaxpublic extends Cl_Controller
         $status = mim_sms($txt, $phone_number);
         $return_data['status'] = true;
         $return_data['msg'] = 'OTP send your phone';
-        
       } else {
         $return_data['msg'] = 'OTP Something wrong';
       }

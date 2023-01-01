@@ -1782,32 +1782,37 @@ function smsSend($txt, $phone = '', $status)
       }
       if ($smsSetting->field_3 == 1) {
         if ($smsSetting->field_3_v == "Yes") {
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
     } elseif ($status == 2) {
       if ($smsSetting->field_2 == 1) {
         if ($smsSetting->field_2_v) {
           $phone1 = getPhoneByUserId($smsSetting->field_2_v);
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
 
       if ($smsSetting->field_6 == 1) {
         if ($smsSetting->field_6_v == "Yes") {
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
     } elseif ($status == 3) {
       if ($smsSetting->field_4 == 1) {
         if ($smsSetting->field_4_v == "Yes") {
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
     } elseif ($status == 4) {
       if ($smsSetting->field_5 == 1) {
         if ($smsSetting->field_5_v == "Yes") {
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
     }
@@ -1816,36 +1821,42 @@ function smsSend($txt, $phone = '', $status)
       if ($smsSetting->field_1 == 1) {
         if ($smsSetting->field_1_v) {
           $phone1 = getPhoneByUserId($smsSetting->field_1_v);
-          $status = sendSSL_WareSMS($txt, $phone1);
+          // $status = sendSSL_WareSMS($txt, $phone1);
+          $status = mim_sms($txt, $phone);
         }
       }
       if ($smsSetting->field_3 == 1) {
         if ($smsSetting->field_3_v == "Yes") {
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
     } elseif ($status == 2) {
       if ($smsSetting->field_2 == 1) {
         if ($smsSetting->field_2_v) {
           $phone1 = getPhoneByUserId($smsSetting->field_2_v);
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
       if ($smsSetting->field_6 == 1) {
         if ($smsSetting->field_6_v == "Yes") {
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
     } elseif ($status == 3) {
       if ($smsSetting->field_4 == 1) {
         if ($smsSetting->field_4_v == "Yes") {
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
     } elseif ($status == 4) {
       if ($smsSetting->field_5 == 1) {
         if ($smsSetting->field_5_v == "Yes") {
-          $status = sendSSL_WareSMS($txt, $phone);
+          // $status = sendSSL_WareSMS($txt, $phone);
+          $status = mim_sms($txt, $phone);
         }
       }
     }

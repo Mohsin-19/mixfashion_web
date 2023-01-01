@@ -40,7 +40,6 @@ $paymentSetting = paymentSetting();
       </div>
     </div>
 
-
     <div class="row justify-content-center my-3 payment_methods">
       <div class="col-lg-3 col-sm-4 col-6">
         <div class="icon_box icon_box_style4 payment_click cashOnDelivery  mb-3 mb-md-0" data-id="1">
@@ -65,13 +64,8 @@ $paymentSetting = paymentSetting();
     </div>
 
     <div class="row justify-content-center">
-
       <div class="col-md-5 text-center">
-
-
-
         <input type="hidden" name="hidden_payment_status" id="hidden_payment_status" class="d-none" value="">
-
         <div class="mt-3">
           <input class="uk-checkbox " name="accept_payment_terms" id="accept_payment_terms" value="1" type="checkbox">
           Accept
@@ -82,12 +76,8 @@ $paymentSetting = paymentSetting();
           <?= lang('Confirm'); ?>
           <span class="buttonLoader"></span>
         </button>
-
       </div>
-
-
     </div> <!-- row -->
-
   </div> <!-- custom-container -->
 </div> <!-- main_content -->
 

@@ -212,6 +212,7 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                     <tbody>
                       <?php
                       foreach ($result as $key => $attrItem) :
+                        $attr_id = $attrItem['id'] ?? 0;
                         $color_id = $attrItem['color_id'] ?? 0;
                         $color_name = $attrItem['color_name'] ?? "";
                         $size_id = $attrItem['size_id'] ?? 0;
@@ -219,7 +220,6 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                         $color_code = $attrItem['color_code'] ?? "";
                         $size_name = $attrItem['size_name'] ?? "";
                         $qty = $attrItem['product_qty'] ?? 0;
-
                       ?>
                         <?php if ($key == 0) : ?>
                           <tr>
@@ -230,13 +230,14 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                             <?php if ($size_name) : ?>
                               <td>Size</td>
                             <?php endif; ?>
+                            <td>Quantity</td>
                           </tr>
                         <?php endif; ?>
 
                         <?php if ($qty > 0) { ?>
                           <tr>
                             <td class="align-middle">
-                              <input type="radio" name="activeAttribute" class="AttrProduct<?= $color_id + $size_id ?>" data-color-id="<?= $color_id ?>" data-color-name="<?= $color_name ?>" data-size-id="<?= $size_id ?>" data-size-name="<?= $size_name ?>" data-qty="<?= $qty ?>" data-price="<?= $product_price ?>" value="<?= $product->id ?>" id="attr-<?= $key ?>" <?= $key == 0 ? 'checked="checked"' : '' ?>>
+                              <input type="radio" name="activeAttribute" class="AttrProduct<?= $color_id + $size_id ?> Attribute_<?= $attr_id ?>" data-color-id="<?= $color_id ?>" data-color-name="<?= $color_name ?>" data-size-id="<?= $size_id ?>" data-size-name="<?= $size_name ?>" data-qty="<?= $qty ?>" data-price="<?= $product_price ?>" data-attr-id="<?= $attr_id ?>" value="<?= $product->id ?>" id="attr-<?= $key ?>" <?= $key == 0 ? 'checked="checked"' : '' ?>>
                             </td>
                             <?php if ($color_code) : ?>
                               <td class="align-middle">
@@ -252,6 +253,19 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                                 </label>
                               </td>
                             <?php endif; ?>
+                            <td class="align-middle">
+                              <div class="cart-product-quantity">
+                                <div class="input-group plus-minus-group mb-2 mb-sm-0">
+                                  <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-sm btn_m" data-attr-id="<?= $attr_id ?>" data-id="<?= $product->id ?>"><i class="icon-minus"></i></button>
+                                  </div>
+                                  <input type="text" id="pro_qty" class="qty qty_<?= $attr_id ?> form-control text-center" value="0">
+                                  <div class=" input-group-append">
+                                    <button type="button" class="btn btn-sm btn_p" data-attr-id="<?= $attr_id ?>" data-id="<?= $product->id ?>"><i class="icon-plus"></i></button>
+                                  </div>
+                                </div> <!-- input-group -->
+                              </div>
+                            </td>
                           </tr>
                         <?php } else { ?>
                           <!-- <tr>
@@ -294,17 +308,7 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
             </div> <!-- product_sort_info -->
             <hr />
             <div class="cart_extra">
-              <div class="cart-product-quantity">
-                <div class="input-group plus-minus-group mb-2 mb-sm-0">
-                  <div class="input-group-prepend">
-                    <button type="button" class="btn btn_m" data-id="<?= $product->id ?>"><i class="icon-minus"></i></button>
-                  </div>
-                  <input type="text" id="pro_qty" class="qty qty_<?= $product->id ?> form-control text-center" value="0" readonly="readonly">
-                  <div class="input-group-append">
-                    <button type="button" class="btn btn_p" data-id="<?= $product->id ?>"><i class="icon-plus"></i></button>
-                  </div>
-                </div> <!-- input-group -->
-              </div>
+
               <div class="cart_btn">
                 <button type="button" class="btnCart btnCart_<?= $product->id ?> btn btn-warning btn-addtocart" data-id="<?= $product->id ?>"><i class="icon-basket-loaded"></i> Add to cart
                 </button>

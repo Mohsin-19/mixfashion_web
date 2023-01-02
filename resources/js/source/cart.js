@@ -1,4 +1,5 @@
 import { checkout_summary_re_calculation } from "./customerAddress";
+import { get } from "./../../../assets/bower_components/moment/src/lib/duration/get";
 
 window.Cart = require("cart-localstorage");
 
@@ -169,11 +170,11 @@ function checkout_items(index, item, cart_price, row_total) {
     <td class="text-center">
       <div class="input-group input-group-sm plus-minus-group mx-auto">
         <div class="input-group-prepend">
-          <button type="button" data-id="${id}" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" class="btn btn_m "><i class="icon-minus"></i></button>
+          <button type="button" data-id="${id}" data-attr-id="${id}" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" class="btn btn_m"><i class="icon-minus"></i></button>
         </div>
-        <input type="text" value="${cart_qty}" class="form-control text-center" readonly="readonly">
+        <input type="text" value="${cart_qty}" class="qty qty_${id} form-control text-center">
         <div class="input-group-append">
-          <button type="button" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" data-id="${id}" class="btn btn_p "><i class="icon-plus"></i></button>
+          <button type="button" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" data-id="${id}" data-attr-id="${id}" class="btn btn_p"><i class="icon-plus"></i></button>
         </div>
       </div>
     </td>
@@ -207,6 +208,7 @@ function renderCart() {
     var row_tax = item.tax_percentage;
     var cart_qty = item.quantity;
     var attr_qty = item.attr_qty;
+    var attr_id = item.attr_id;
 
     var category_id = item.hasOwnProperty("category_id") ? item.category_id : 0;
     var subcategory_id = item.hasOwnProperty("subcategory_id")
@@ -240,6 +242,7 @@ function renderCart() {
 
     var row_tax_total = getTaxAmount(row_total, row_tax);
     total_tax += row_tax_total;
+
     if (single_page === "checkout") {
       checkoutItems += checkout_items(index, item, cart_price, row_total);
     } else if (single_page === "payment") {
@@ -252,7 +255,7 @@ function renderCart() {
     } else if (single_page === "product") {
       // start single page
       $("#amount_" + id).text(numberWithCommas(cart_price));
-      $(".qty_" + id).val(cart_qty);
+      $(".qty_" + item.id).val(item.quantity);
       $(".btnCart_" + id).hide();
       $(".btnBuy_" + id).show();
       dom.find(`.AttrProduct${color_id + size_id}`).prop("checked", true);
@@ -280,7 +283,6 @@ function renderCart() {
   $(".cart_footer").find(".totalVal").text(numberWithCommas(itemsTotal));
 
   // window.total_discount = parseFloat(total_discount);
-
   setTimeout(function () {
     calculate_summary(total_del_charge, total_tax);
   }, 300);
@@ -341,7 +343,13 @@ $(document)
     }
   })
   .on("click", ".btn_p, .btnCart", function () {
-    var activeAttribute = dom.find("input[name=activeAttribute]:checked");
+    var attr_id = parseInt($(this).attr("data-attr-id"));
+    var activeAttribute = null;
+    if (attr_id) {
+      $(".Attribute_" + attr_id).prop("checked", true);
+    }
+    activeAttribute = dom.find("input[name=activeAttribute]:checked");
+
     var inputQty = 0;
     var productQty = 0;
     var plusBtn = $(this);
@@ -356,12 +364,12 @@ $(document)
     }
 
     if (parseInt(productQty) > parseInt(inputQty)) {
-      var product_id = $(this).attr("data-id");
-      var id = parseInt(product_id);
-      if (Cart.exists(id)) {
-        Cart.quantity(id, 1);
+      const product_id = parseInt($(this).attr("data-id"));
+
+      if (Cart.exists(attr_id)) {
+        Cart.quantity(attr_id, 1);
       } else {
-        var product = product_item(id);
+        var product = product_item(attr_id);
         if (activeAttribute.length) {
           var attribute_price = activeAttribute.attr("data-price");
           attribute_price = attribute_price ? Number(attribute_price) : 0;
@@ -369,15 +377,14 @@ $(document)
           product.color_name = activeAttribute.attr("data-color-name");
           product.size_id = activeAttribute.attr("data-size-id");
           product.size_name = activeAttribute.attr("data-size-name");
+          product.attr_id = activeAttribute.attr("data-attr-id");
           product.attr_qty = productQty;
-
           if (attribute_price) {
             product.price = attribute_price;
           }
         }
-
+        product.id = attr_id;
         let product_price = parseInt(product.price);
-        let product_id = parseInt(product.id);
         if (product_id && product_price) {
           setTimeout(() => {
             fb_pixel_AddToCart(
@@ -396,7 +403,8 @@ $(document)
   .on("change", "input[name=activeAttribute]", function () {
     var thisItem = $(this);
     var qty = thisItem.attr("data-qty");
-    console.log(qty, inputQty);
+    var inputQty = $("#pro_qty").val();
+
     if (qty >= inputQty) {
       $(".btn_p").prop("disabled", false);
       var item_id = parseInt(thisItem.val());
@@ -422,7 +430,11 @@ $(document)
   })
   .on("click", ".btn_m", function () {
     var plusBtn = $(this);
-    var inputQty = $(this).attr("data-cart-qty");
+    var product_id = $(this).attr("data-id");
+    var id = parseInt(product_id);
+    var attr_id = $(this).attr("data-attr-id");
+    var attrId = parseInt(attr_id);
+    var inputQty = $(".qty_" + attr_id).val();
 
     if (inputQty) {
       plusBtn.closest(".btn_p").prop("disabled", false);
@@ -430,17 +442,14 @@ $(document)
       $(".btn_p").prop("disabled", false);
     }
 
-    var product_id = $(this).attr("data-id");
-    var id = parseInt(product_id);
-    if (Cart.exists(id)) {
-      Cart.quantity(id, -1);
+    if (Cart.exists(attrId)) {
+      Cart.quantity(attrId, -1);
     }
   })
   .on("click", ".small-galary-img", function (e) {
     // alert('ol');
     e.preventDefault();
     const image = $(this).attr("data-image");
-    console.log(image);
     $(this)
       .closest(".product_gallery_item")
       .find(".product_gallery_item")

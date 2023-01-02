@@ -371,7 +371,6 @@ class Common_model extends CI_Model
     }
   }
 
-
   public function get_customers($company_id)
   {
     return $this->db->select('tc.*')

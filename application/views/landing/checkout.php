@@ -3,13 +3,9 @@
 <?php
 $getSiteSetting = getSiteSetting();
 $currency = $getSiteSetting->currency;
-
 ?>
 
-
 <span id="single_page_name" class="d-none">checkout</span>
-
-
 <div class="breadcrumb_section bg_gray page-title-mini">
   <div class="custom-container">
     <div class="col-md-12">
@@ -54,6 +50,7 @@ $currency = $getSiteSetting->currency;
             ?>
             <div class="shipping-address">
               <span class="d-none" id="delivery_districts"><?= json_encode($districts) ?></span>
+              
               <form action="<?= site_url('ajax/checkout/cart-save-session') ?>" method="POST" id="shipping-form">
                 <input type="hidden" name="hidden_coupon_code" id="hidden_coupon_code">
                 <input type="hidden" name="hidden_coupon_amount" id="hidden_coupon_amount">
@@ -120,7 +117,7 @@ $currency = $getSiteSetting->currency;
                 <td class="text-right"><span class="checkout_subtotal">0.00</span></td>
               </tr>
               <tr>
-                <td class="text-left">Vat 7.5%</td>
+                <td class="text-left">Vat <?= $getSiteSetting->vat ?>%</td>
                 <td class="text-right "><span class="vat_charge">0.00</span></td>
               </tr>
               <tr>
@@ -138,7 +135,6 @@ $currency = $getSiteSetting->currency;
             </table> <!-- checkout_cart -->
             <button type="button" class="process_order btn btn-block btn-dark">Make Payment</button>
           </div> <!-- card-body -->
-
         </div>
       </div> <!-- col-md-4 -->
 
@@ -146,3 +142,4 @@ $currency = $getSiteSetting->currency;
 
   </div> <!-- custom-container -->
 </div> <!-- main_content -->
+<input id="vat" type="hidden" value="<?= $getSiteSetting->vat ?>">

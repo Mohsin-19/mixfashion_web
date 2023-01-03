@@ -194,7 +194,7 @@
           <tr>
             <th class="text-center" style="width: 20%;">Color</th>
             <th class="text-center" style="width: 20%;">Size</th>
-            <th class="text-center" style="width: 20%;">Price</th>
+            <!-- <th class="text-center" style="width: 20%;">Price</th> -->
             <th class="text-center" style="width: 20%;">Qty</th>
             <th class="text-center" style="width: 20%;">Option</th>
           </tr>
@@ -223,9 +223,9 @@
                     <?php endforeach ?>
                   </select>
                 </td>
-                <td class="text-center">
+                <!-- <td class="text-center">
                   <input type="number" name="attribute[<?= $key ?>][price]" value="<?= $att['product_price'] ?>" class="price form-control" min="0">
-                </td>
+                </td> -->
                 <td class="text-center">
                   <input type="number" name="attribute[<?= $key ?>][qty]" value="<?= $att['product_qty'] ?>" class="qty form-control" min="0">
                 </td>

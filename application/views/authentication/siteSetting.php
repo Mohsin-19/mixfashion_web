@@ -112,7 +112,6 @@ if ($this->session->flashdata('exception_1')) {
             </div>
             <div class="clearfix"></div>
             <div class="col-md-3">
-
               <div class="form-group">
                 <label> <?php echo lang('date_format'); ?> <span class="required_star">*</span></label>
                 <select tabindex="2" class="form-control select2 width_100_p" name="date_format" id="date_format">
@@ -177,6 +176,19 @@ if ($this->session->flashdata('exception_1')) {
                 </div>
               <?php } ?>
             </div>
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label> <?php echo lang('Vat'); ?> <span class="required_star">*</span></label>
+                <input type="text" name="vat" tabindex="4" class="form-control" id="vat" placeholder="<?php echo lang('vat'); ?>" value="<?php echo isset($getSiteSetting) && isset($getSiteSetting->vat) ? $getSiteSetting->vat : set_value('vat'); ?>" />
+              </div>
+              <?php if (form_error('vat')) { ?>
+                <div class="alert alert-error txt-uh-21">
+                  <p><?php echo form_error('vat'); ?></p>
+                </div>
+              <?php } ?>
+            </div>
+
             <div class="clearfix"></div>
             <div class="col-md-3">
               <div class="form-group">
@@ -489,7 +501,6 @@ if ($this->session->flashdata('exception_1')) {
 
   </div>
 </div>
-
 
 <div class="modal fade" id="logo_preview_login_page" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog">

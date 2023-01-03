@@ -31,7 +31,6 @@ class AjaxOrderController extends Cl_Controller
     //    }
   }
 
-
   public function get_order_edit_modal()
   {
     $order_id = $this->input->post('order_id');
@@ -62,7 +61,6 @@ class AjaxOrderController extends Cl_Controller
 
     return responseJson($data);
   }
-
 
   public function getSearchProduct()
   {

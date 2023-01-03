@@ -1,6 +1,3 @@
-import { checkout_summary_re_calculation } from "./customerAddress";
-import { get } from "./../../../assets/bower_components/moment/src/lib/duration/get";
-
 window.Cart = require("cart-localstorage");
 
 window.sumArray = function (array) {
@@ -78,6 +75,8 @@ function getTaxAmount(amount, percentage) {
 function calculate_summary(total_del_charge, total_tax) {
   const items = Cart.list();
   const cartTotal = Cart.total();
+  let setting_vat = Number($("#vat").val());
+
   let noDelivery = items.filter(
     (noDel) =>
       noDel.delivery_charge === null || parseInt(noDel.delivery_charge) === 0
@@ -117,7 +116,7 @@ function calculate_summary(total_del_charge, total_tax) {
     d_charge = parseInt(main_charge) + parseInt(total_del_charge);
   }
 
-  let vat_charge = Number(cartTotal) * 0.075;
+  let vat_charge = (Number(cartTotal) / 100) * setting_vat;
   // console.log('d_charge', d_charge);
   // console.log('area_id', area_id);
   // console.log('areas', areas);
@@ -172,7 +171,7 @@ function checkout_items(index, item, cart_price, row_total) {
         <div class="input-group-prepend">
           <button type="button" data-id="${id}" data-attr-id="${id}" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" class="btn btn_m"><i class="icon-minus"></i></button>
         </div>
-        <input type="text" value="${cart_qty}" class="qty qty_${id} form-control text-center">
+        <input type="text" value="${cart_qty}" class="qty qty_${id} form-control text-center" readonly>
         <div class="input-group-append">
           <button type="button" data-qty="${attr_qty}" data-cart-qty="${cart_qty}" data-id="${id}" data-attr-id="${id}" class="btn btn_p"><i class="icon-plus"></i></button>
         </div>
@@ -343,10 +342,10 @@ $(document)
     }
   })
   .on("click", ".btn_p, .btnCart", function () {
-    var attr_id = parseInt($(this).attr("data-attr-id"));
+    var attrId = parseInt($(this).attr("data-attr-id"));
     var activeAttribute = null;
-    if (attr_id) {
-      $(".Attribute_" + attr_id).prop("checked", true);
+    if (attrId) {
+      $(".Attribute_" + attrId).prop("checked", true);
     }
     activeAttribute = dom.find("input[name=activeAttribute]:checked");
 
@@ -355,9 +354,9 @@ $(document)
     var plusBtn = $(this);
 
     if (activeAttribute.length) {
-      inputQty = $("#pro_qty").val();
+      inputQty = $(".qty_" + attrId).val();
       productQty = activeAttribute.attr("data-qty");
-      plusBtn = $(".btn_p");
+      plusBtn = $(".plus_" + attrId);
     } else {
       inputQty = $(this).attr("data-cart-qty");
       productQty = $(this).attr("data-qty");
@@ -366,10 +365,10 @@ $(document)
     if (parseInt(productQty) > parseInt(inputQty)) {
       const product_id = parseInt($(this).attr("data-id"));
 
-      if (Cart.exists(attr_id)) {
-        Cart.quantity(attr_id, 1);
+      if (Cart.exists(attrId)) {
+        Cart.quantity(attrId, 1);
       } else {
-        var product = product_item(attr_id);
+        var product = product_item(attrId);
         if (activeAttribute.length) {
           var attribute_price = activeAttribute.attr("data-price");
           attribute_price = attribute_price ? Number(attribute_price) : 0;
@@ -383,7 +382,8 @@ $(document)
             product.price = attribute_price;
           }
         }
-        product.id = attr_id;
+        product.id = attrId;
+        product.product_id = product_id;
         let product_price = parseInt(product.price);
         if (product_id && product_price) {
           setTimeout(() => {
@@ -402,46 +402,29 @@ $(document)
 
   .on("change", "input[name=activeAttribute]", function () {
     var thisItem = $(this);
-    var qty = thisItem.attr("data-qty");
-    var inputQty = $("#pro_qty").val();
-
-    if (qty >= inputQty) {
-      $(".btn_p").prop("disabled", false);
-      var item_id = parseInt(thisItem.val());
-      let price = thisItem.attr("data-price");
-      price = price ? Number(price) : 0;
-      if (Cart.exists(item_id)) {
-        Cart.update(item_id, "color_id", thisItem.attr("data-color-id"));
-        Cart.update(item_id, "color_name", thisItem.attr("data-color-name"));
-        Cart.update(item_id, "size_id", thisItem.attr("data-size-id"));
-        Cart.update(item_id, "size_name", thisItem.attr("data-size-name"));
-        if (price) {
-          Cart.update(item_id, "price", parseInt(price));
-        }
-      } else {
-        if (price) {
-          $(".product_price .price").text(price);
-        }
+    var item_id = parseInt(thisItem.val());
+    let price = thisItem.attr("data-price");
+    price = price ? Number(price) : 0;
+    if (Cart.exists(item_id)) {
+      Cart.update(item_id, "color_id", thisItem.attr("data-color-id"));
+      Cart.update(item_id, "color_name", thisItem.attr("data-color-name"));
+      Cart.update(item_id, "size_id", thisItem.attr("data-size-id"));
+      Cart.update(item_id, "size_name", thisItem.attr("data-size-name"));
+      if (price) {
+        Cart.update(item_id, "price", parseInt(price));
       }
     } else {
-      $(".qty_3").val(qty);
-      $(".btn_p").prop("disabled", true);
+      if (price) {
+        $(".product_price .price").text(price);
+      }
     }
   })
   .on("click", ".btn_m", function () {
-    var plusBtn = $(this);
-    var product_id = $(this).attr("data-id");
-    var id = parseInt(product_id);
-    var attr_id = $(this).attr("data-attr-id");
-    var attrId = parseInt(attr_id);
-    var inputQty = $(".qty_" + attr_id).val();
-
-    if (inputQty) {
-      plusBtn.closest(".btn_p").prop("disabled", false);
-    } else {
-      $(".btn_p").prop("disabled", false);
+    var attrId = parseInt($(this).attr("data-attr-id"));
+    if (attrId) {
+      $(".plus_" + attrId).prop("disabled", false);
+      $(".Attribute_" + attrId).prop("checked", true);
     }
-
     if (Cart.exists(attrId)) {
       Cart.quantity(attrId, -1);
     }
@@ -472,7 +455,9 @@ function checkout_summary_calculation() {
   let subTotal = Cart.total();
   let discount = Number($("#hidden_coupon_amount").val());
   let d_charge = Number($("#city").val());
-  let vat_charge = Number(subTotal) * 0.075;
+  let setting_vat = Number($("#vat").val());
+  let vat_charge = (Number(subTotal) / 100) * setting_vat;
+
   let total_summary =
     Number(subTotal) + Number(vat_charge) + Number(d_charge) - Number(discount);
 
@@ -586,7 +571,6 @@ $(document)
     // var form = $(this).serializeArray();
     // data.cart = JSON.stringify(cart_list);
     // data.form = JSON.stringify(form);
-
     $.ajax({
       type: "POST",
       url: action,

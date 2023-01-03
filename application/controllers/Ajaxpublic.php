@@ -299,11 +299,9 @@ class Ajaxpublic extends Cl_Controller
     $delivery_charge = $cart->d_charge ? (int)$cart->d_charge : 0;
     $discount = $cart->discount ? (int)$cart->discount : 0;
 
-    // dd($cart->cart_total);
-
     $payment_id = $this->input->post('payment_id');
     $cart_total = $cart->cart_total;
-    $total_tax =  (int) $cart_total * 0.075;
+    $total_tax = 0;
     $total_amount = $cart_total + $total_tax + $delivery_charge - $discount;
 
     $data = [
@@ -333,7 +331,7 @@ class Ajaxpublic extends Cl_Controller
     foreach ($cart_list as $value) {
       $data = [
         'order_id' => $id,
-        'product_id' => $value->id,
+        'product_id' => $value->product_id,
         'name' => $value->name,
         'qty' => $value->quantity,
         'price' => $value->price,
@@ -872,7 +870,6 @@ class Ajaxpublic extends Cl_Controller
     $vat_charge = $this->input->post('vat_charge');
     $total_payable = $this->input->post('total_payable');
     $d_charge = $this->input->post('city');
-
 
     $total_tax = $vat_charge;
 

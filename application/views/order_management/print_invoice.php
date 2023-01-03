@@ -157,6 +157,7 @@
                 $total_discount = "0.00";
                 $total_cupon_discount = "0.00";
                 $total_amount = $row->price * $row->qty;
+
                 if ($row->discount_amount && $row->discount_amount != "0.00") {
                   $total_discount = ($row->original_price - $row->discount_amount) * $row->qty;
                   $total_discount_item = +$total_discount;

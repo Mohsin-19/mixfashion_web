@@ -517,6 +517,7 @@ class Authentication extends Cl_Controller
       $this->form_validation->set_rules('currency', lang('currency'), 'required|max_length[300]');
       $this->form_validation->set_rules('date_format', lang('date_format'), 'required|max_length[300]');
       $this->form_validation->set_rules('time_zone', lang('country_time_zone'), 'required|max_length[300]');
+      $this->form_validation->set_rules('vat', lang('vat'));
       $this->form_validation->set_rules('site_languages_h', lang('site_languages'), 'required|max_length[300]');
       $this->form_validation->set_rules('default_language_frontend', lang('defaultLanguageforFrontend'), 'required|max_length[300]');
 
@@ -555,6 +556,7 @@ class Authentication extends Cl_Controller
         $data['currency'] = htmlspecialchars($this->input->post('currency'));
         $data['date_format'] = htmlspecialchars($this->input->post('date_format'));
         $data['time_zone'] = htmlspecialchars($this->input->post('time_zone'));
+        $data['vat'] = htmlspecialchars($this->input->post('vat'));
         $data['facebook_link'] = htmlspecialchars($this->input->post('facebook_link'));
         $data['default_language_frontend'] = htmlspecialchars($this->input->post('default_language_frontend'));
         $data['product_hover_effect'] = htmlspecialchars($this->input->post('product_hover_effect'));

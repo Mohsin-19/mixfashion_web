@@ -860,6 +860,7 @@ WHERE i.del_status='Live' AND i.available='Yes' AND {$condition} GROUP BY i.id "
         $color_id = $value['color_id'];
         $size_id = $value['size_id'];
         $product_qty = $this->db->query("SELECT product_qty FROM $table_name WHERE product_id = '$product_id' AND color_id = $color_id AND size_id = $size_id ")->row('product_qty');
+
         if ($product_qty) {
           if ($type == "plus") {
             $new_qty = $product_qty + $value['qty'];

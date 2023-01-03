@@ -257,11 +257,11 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
                               <div class="cart-product-quantity">
                                 <div class="input-group plus-minus-group mb-2 mb-sm-0">
                                   <div class="input-group-prepend">
-                                    <button type="button" class="btn btn-sm btn_m" data-attr-id="<?= $attr_id ?>" data-id="<?= $product->id ?>"><i class="icon-minus"></i></button>
+                                    <button type="button" class="btn btn-sm btn_m minus_<?= $attr_id ?>" data-qty="<?= $qty ?>" data-attr-id="<?= $attr_id ?>" data-id="<?= $product->id ?>"><i class="icon-minus"></i></button>
                                   </div>
-                                  <input type="text" id="pro_qty" class="qty qty_<?= $attr_id ?> form-control text-center" value="0">
+                                  <input type="text" id="pro_qty" class="qty qty_<?= $attr_id ?> form-control text-center" value="0" readonly>
                                   <div class=" input-group-append">
-                                    <button type="button" class="btn btn-sm btn_p" data-attr-id="<?= $attr_id ?>" data-id="<?= $product->id ?>"><i class="icon-plus"></i></button>
+                                    <button type="button" class="btn btn-sm btn_p plus_<?= $attr_id ?>" data-qty="<?= $qty ?>" data-attr-id="<?= $attr_id ?>" data-id="<?= $product->id ?>"><i class="icon-plus"></i></button>
                                   </div>
                                 </div> <!-- input-group -->
                               </div>
@@ -310,9 +310,9 @@ $attributes = htmlspecialchars(json_encode($attrData), ENT_QUOTES, 'UTF-8');
             <div class="cart_extra">
 
               <div class="cart_btn">
-                <button type="button" class="btnCart btnCart_<?= $product->id ?> btn btn-warning btn-addtocart" data-id="<?= $product->id ?>"><i class="icon-basket-loaded"></i> Add to cart
-                </button>
-                <a href="<?= site_url('checkout') ?>" class="btnBuy btnBuy_<?= $product->id ?> btn btn-success" data-id="<?= $product->id ?>">Buy
+                <!-- <button type="button" class="btnCart btnCart_<?= $product->id ?> btn btn-warning btn-addtocart" data-id="<?= $product->id ?>"><i class="icon-basket-loaded"></i> Add to cart
+                </button> -->
+                <a href="<?= site_url('checkout') ?>" class="btnBuy_<?= $product->id ?> btn btn-success" data-id="<?= $product->id ?>">Buy
                   now</a>
                 <a href="<?= $product->id ?>" class="btn btn-danger" id="addToWishlist">
                   <i class="icon-heart"></i>

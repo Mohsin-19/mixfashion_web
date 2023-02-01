@@ -311,7 +311,7 @@ class Item extends Cl_Controller
         $product_info['user_id'] = $this->session->userdata('user_id');
         $product_info['company_id'] = $this->session->userdata('company_id');
 
-        $attributes = $this->input->post('attribute') != null ? $this->input->post('attribute') : [] ;
+        $attributes = $this->input->post('attribute') != null ? $this->input->post('attribute') : [];
 
         if ($id == "") {
           check_permission('add_product');
@@ -462,11 +462,8 @@ class Item extends Cl_Controller
       $config['detect_mime'] = TRUE;
       $this->load->library('upload', $config);
       if ($this->upload->do_upload("photo")) {
-
         $upload_info = $this->upload->data();
-
         $photo = $upload_info['file_name'];
-
         $config['image_library'] = 'gd2';
         $config['source_image'] = './images/product/' . $photo;
         $config['maintain_ratio'] = FALSE;
@@ -474,7 +471,6 @@ class Item extends Cl_Controller
         // $config['height'] = 564;
 
         $this->load->library('image_lib', $config);
-
         $this->image_lib->resize();
         $this->session->set_userdata('photo', $upload_info['file_name']);
       } else {
@@ -500,17 +496,13 @@ class Item extends Cl_Controller
       if ($this->upload->do_upload("details_modal_image")) {
 
         $upload_info = $this->upload->data();
-
         $photo = $upload_info['file_name'];
-
         $config['image_library'] = 'gd2';
         $config['source_image'] = './images/' . $photo;
         $config['maintain_ratio'] = FALSE;
         // $config['width'] = 563;
         // $config['height'] = 564;
-
         $this->load->library('image_lib', $config);
-
         $this->image_lib->resize();
         $this->session->set_userdata('details_modal_image', $upload_info['file_name']);
       } else {
@@ -561,9 +553,7 @@ class Item extends Cl_Controller
       if ($this->upload->do_upload("galary_image_2")) {
 
         $upload_info = $this->upload->data();
-
         $photo = $upload_info['file_name'];
-
         $config['image_library'] = 'gd2';
         $config['source_image'] = './images/product/' . $photo;
         $config['maintain_ratio'] = FALSE;
@@ -595,9 +585,7 @@ class Item extends Cl_Controller
       if ($this->upload->do_upload("galary_image_3")) {
 
         $upload_info = $this->upload->data();
-
         $photo = $upload_info['file_name'];
-
         $config['image_library'] = 'gd2';
         $config['source_image'] = './images/product/' . $photo;
         $config['maintain_ratio'] = FALSE;
@@ -703,7 +691,6 @@ class Item extends Cl_Controller
   public function uploadItem()
   {
     check_permission('upload_product');
-
     if ($this->input->post('submit')) {
       if ($_FILES['userfile']['name'] != "") {
         if ($_FILES['userfile']['name'] == "Item_Upload.xlsx") {
@@ -1278,12 +1265,9 @@ class Item extends Cl_Controller
   public function getAjaxData()
   {
     $company_id = $this->session->userdata('company_id');
-
     $category_id = htmlspecialchars($this->input->post('category_id'));
     $subcategory_id = htmlspecialchars($this->input->post('subcategory_id'));
     $supplier_id = htmlspecialchars($this->input->post('supplier_id'));
-
-
     $products = $this->Master_model->make_datatables($company_id, $category_id, $subcategory_id, $supplier_id);
     $data = array();
 
